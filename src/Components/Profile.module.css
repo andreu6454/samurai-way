@@ -1,0 +1,4 @@
+.appContent{
+    grid-area: content;
+    background-color: cadetblue;
+}

@@ -1,0 +1,7 @@
+header img{
+    width: 60px;
+}
+.appHeader{
+    grid-area: header;
+    background-color: cadetblue;
+}
