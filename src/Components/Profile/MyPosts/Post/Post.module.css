@@ -1,7 +1,8 @@
 .item {
-    color: darkgray;
+    color: black;
 }
 .item img{
     width: 60px;
     height: 60px;
+    padding-right: 5px;
 }
