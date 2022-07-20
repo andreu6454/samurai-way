@@ -6,9 +6,9 @@ const MyPosts = () => {
     return (
         <div>
             My posts:
-            <Post />
-            <Post />
-            <Post />
+            <Post message={"Hello"}/>
+            <Post message={"How are you?"}/>
+            <Post message={"good"}/>
         </div>
     );
 };
