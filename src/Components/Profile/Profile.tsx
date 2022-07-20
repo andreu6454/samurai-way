@@ -11,7 +11,7 @@ const Profile = () => {
             <div>
                 <img width="150px" src={"https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg"} alt={"avatar"}/>
             </div>
-            <textarea>New Post</textarea>
+            <textarea defaultValue={"New Post"}/>
             <button>Send</button>
             <MyPosts />
         </div>
