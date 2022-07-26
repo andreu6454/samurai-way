@@ -1,9 +1,16 @@
 .appNav{
-    padding-top: 5px;
     grid-area: nav;
     background-color: cadetblue;
+    padding: 20px;
 }
 .item{
     color: ghostwhite;
     padding-bottom: 5px;
+}
+.item a{
+    color: #3b3939;
+    text-decoration: none;
+}
+.item a.active{
+    color: black;
 }
