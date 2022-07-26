@@ -10,7 +10,7 @@ const Post = (props:PostPropsType) => {
             <img src = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg"/>
             {props.message}
             <div>
-                Like
+                Like 0
             </div>
         </div>
     );
