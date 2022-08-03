@@ -3,6 +3,7 @@ import style from "./Post.module.css"
 
 type PostPropsType = {
     message: string;
+    likes: number
 }
 const Post = (props:PostPropsType) => {
     return (
@@ -10,7 +11,7 @@ const Post = (props:PostPropsType) => {
             <img src = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg"/>
             {props.message}
             <div>
-                Like 0
+                likes {props.likes}
             </div>
         </div>
     );
