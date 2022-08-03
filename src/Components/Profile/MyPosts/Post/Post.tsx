@@ -8,7 +8,7 @@ type PostPropsType = {
 const Post = (props:PostPropsType) => {
     return (
         <div className={style.item}>
-            <img src = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg"/>
+            <img src = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg" alt={"ava"}/>
             {props.message}
             <div>
                 likes {props.likes}
