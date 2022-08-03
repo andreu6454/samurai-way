@@ -8,12 +8,13 @@ const MyPosts = () => {
         {id: 2, message: "How are you?", likesCount: 5},
         {id: 3, message: "good", likesCount: 14}
     ]
+
+    const PostsElement = PostsData.map(dialog => <Post message={dialog.message} likes={dialog.likesCount}/>)
+
     return (
         <div className={style.postsBlock}>
             My posts:
-            <Post message={PostsData[0].message} likes={PostsData[0].likesCount}/>
-            <Post message={PostsData[1].message} likes={PostsData[1].likesCount}/>
-            <Post message={PostsData[2].message} likes={PostsData[2].likesCount}/>
+            {PostsElement}
         </div>
     );
 };
