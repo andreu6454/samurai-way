@@ -3,6 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
+
+export type DialogsDataType = {
+    id: number,
+    name: string
+}
+export type MessageDataType = {
+    id: number,
+    message: string
+}
+export type PostsDataType = {
+    id: number,
+    message: string,
+    likesCount: number
+}
+
 const DialogsData = [
     {id: 1, name: "Andrey"},
     {id: 2, name: "Celvin"},
@@ -21,20 +36,6 @@ const PostsData = [
     {id: 2, message: "How are you?", likesCount: 5},
     {id: 3, message: "good", likesCount: 14}
 ]
-
-export type DialogsDataType = {
-    id: number,
-    name: string
-}
-export type MessageDataType = {
-    id: number,
-    message: string
-}
-export type PostsDataType = {
-    id: number,
-    message: string,
-    likesCount: number
-}
 
 ReactDOM.render(
 
