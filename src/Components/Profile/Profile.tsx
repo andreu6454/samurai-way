@@ -8,6 +8,7 @@ import {PostsDataType} from "../../index";
 type ProfilePropsType = {
     PostsData: Array<PostsDataType>
 }
+
 const Profile = (props: ProfilePropsType) => {
     return (
         <div className={style.appContent}>

@@ -8,6 +8,7 @@ type DialogsPropsType = {
     DialogsData: Array<DialogsDataType>
     MessageData: Array<MessageDataType>
 }
+
 const Dialogs = (props: DialogsPropsType) => {
     const Dialogs = props.DialogsData.map(dialog => <DialogsItem name={dialog.name} id={dialog.id}/>)
     const Messages = props.MessageData.map(message => <MessagesItem message={message.message}/> )

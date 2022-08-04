@@ -4,6 +4,7 @@ import style from "./MessagesItem.module.css"
 type MessagesItemType = {
     message: string
 }
+
 const MessagesItem = (props:MessagesItemType) => {
     return (
         <div className={style.message}>
