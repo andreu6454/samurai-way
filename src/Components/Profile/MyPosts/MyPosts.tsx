@@ -1,15 +1,15 @@
 import React from 'react';
 import style from "./MyPosts.module.css"
 import Post from "./Post/Post";
+import {PostsDataType} from "../../../index";
 
-const MyPosts = () => {
-    const PostsData = [
-        {id: 1, message: "Hello", likesCount: 10},
-        {id: 2, message: "How are you?", likesCount: 5},
-        {id: 3, message: "good", likesCount: 14}
-    ]
+type MyPostsPropsType = {
+    PostsData: Array<PostsDataType>
+}
 
-    const PostsElement = PostsData.map(dialog => <Post message={dialog.message} likes={dialog.likesCount}/>)
+const MyPosts = (props: MyPostsPropsType) => {
+
+    const PostsElement = props.PostsData.map(dialog => <Post message={dialog.message} likes={dialog.likesCount}/>)
 
     return (
         <div className={style.postsBlock}>
