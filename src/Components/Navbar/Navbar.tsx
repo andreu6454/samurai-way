@@ -6,16 +6,16 @@ import {NavBarDataType} from "../../Redux/State";
 type NavBarPropsType = {
     state: NavBarDataType
 }
+
 const Navbar = (props: NavBarPropsType) => {
     const friends = props.state.NavBarData.map(friend =>
         <div>
-            <img src={friend.avatar} className={style.friendsImg} id={friend.id} alt={"avatar"}/>
-        </div>
-    )
-    const friends2 = props.state.NavBarData.map(friend =>
-        <div>
-            <img src={friend.avatar} className={style.friendsImg} id={friend.id} alt={"avatar"}/>
-            <div> {friend.friend}</div>
+            <img
+                src={friend.avatar}
+                className={style.friendsImg}
+                id={friend.id}
+                alt={"avatar"}
+            />
         </div>
     )
     return (
@@ -49,10 +49,6 @@ const Navbar = (props: NavBarPropsType) => {
                 <div className={style.friends}>
                     {friends}
                 </div>
-
-                {/*<div>*/}
-                {/*    {friends2}*/}
-                {/*</div>*/}
             </div>
 
         </nav>

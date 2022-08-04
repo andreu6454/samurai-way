@@ -52,7 +52,7 @@ export const state = {
         MessageData: [
             {id: 1, userId: 1, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg", message: "hello"},
             {id: 2, userId: 1, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg", message: "How are you?"},
-            {id: 3, userId: 2, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg", message: "Yoooooooooo"},
+            {id: 3, userId: 2, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg", message: "Yoooooooooo"}
         ]
     },
     NavBarPage: {

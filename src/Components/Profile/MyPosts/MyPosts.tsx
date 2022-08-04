@@ -9,7 +9,11 @@ type MyPostsPropsType = {
 
 const MyPosts = (props: MyPostsPropsType) => {
 
-    const PostsElement = props.PostsData.map(dialog => <Post message={dialog.message} likes={dialog.likesCount}/>)
+    const PostsElement = props.PostsData.map(dialog =>
+        <Post
+            message={dialog.message}
+            likes={dialog.likesCount}
+        />)
 
     return (
         <div className={style.postsBlock}>
