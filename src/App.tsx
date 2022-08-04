@@ -21,8 +21,8 @@ function App(props: AppPropsType) {
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
-                    <Route path={"/dialogs"}> <Dialogs DialogsData={props.state.DialogsData} MessageData={props.state.MessageData}/>  </Route>
-                    <Route path={"/profile"}> <Profile PostsData={props.state.PostsData}/> </Route>
+                    <Route path={"/dialogs"}> <Dialogs state={props.state.MessagesPage}/>  </Route>
+                    <Route path={"/profile"}> <Profile state={props.state.ProfilePage}/> </Route>
                     <Route path={"/news"} component={News}/>
                     <Route path={"/music"} component={Music}/>
                     <Route path={"/settings"} component={Settings}/>

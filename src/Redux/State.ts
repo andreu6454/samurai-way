@@ -1,7 +1,13 @@
 export type StateDataType = {
+    ProfilePage: ProfilePageDataType
+    MessagesPage: MessagesPageDataType
+}
+export type ProfilePageDataType = {
+    PostsData: Array<PostsDataType>
+}
+export type MessagesPageDataType = {
     DialogsData: Array<DialogsDataType>
     MessageData: Array<MessageDataType>
-    PostsData: Array<PostsDataType>
 }
 export type DialogsDataType = {
     id: number,
@@ -18,22 +24,26 @@ export type PostsDataType = {
 }
 
 export const state = {
-    DialogsData: [
-        {id: 1, name: "Andrey"},
-        {id: 2, name: "Celvin"},
-        {id: 3, name: "Kolyan"},
-        {id: 4, name: "Andrey"},
-        {id: 5, name: "Celvin"},
-        {id: 6, name: "Kolyan"},
-    ],
-    MessageData: [
-        {id: 1, message: "hello"},
-        {id: 2, message: "How are you?"},
-        {id: 3, message: "Yooo"},
-    ],
-    PostsData: [
-        {id: 1, message: "Hello", likesCount: 10},
-        {id: 2, message: "How are you?", likesCount: 5},
-        {id: 3, message: "good", likesCount: 14}
-    ]
+    ProfilePage: {
+        PostsData: [
+            {id: 1, message: "Hello", likesCount: 10},
+            {id: 2, message: "How are you?", likesCount: 5},
+            {id: 3, message: "good", likesCount: 14}
+        ]
+    },
+    MessagesPage: {
+        DialogsData: [
+            {id: 1, name: "Andrey"},
+            {id: 2, name: "Celvin"},
+            {id: 3, name: "Kolyan"},
+            {id: 4, name: "Andrey"},
+            {id: 5, name: "Celvin"},
+            {id: 6, name: "Kolyan"},
+        ],
+        MessageData: [
+            {id: 1, message: "hello"},
+            {id: 2, message: "How are you?"},
+            {id: 3, message: "Yooo"},
+        ]
+    }
 }
