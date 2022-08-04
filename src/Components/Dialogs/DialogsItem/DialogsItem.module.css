@@ -1,11 +1,20 @@
 .dialog{
     color: #3b3939;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
 }
 .dialog a{
     color: #3b3939;
     text-decoration: none;
 }
 .dialog a.active{
-    color: #3b3939;
+    color: darkslateblue;
     text-decoration: none;
+}
+.avatar{
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }

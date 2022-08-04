@@ -9,8 +9,8 @@ type DialogsPropsType = {
 }
 
 const Dialogs = (props: DialogsPropsType) => {
-    const Dialogs = props.state.DialogsData.map(dialog => <DialogsItem name={dialog.name} id={dialog.id}/>)
-    const Messages = props.state.MessageData.map(message => <MessagesItem message={message.message}/> )
+    const Dialogs = props.state.DialogsData.map(dialog => <DialogsItem name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const Messages = props.state.MessageData.map(message => <MessagesItem message={message.message} id={message.id} userId={message.userId} userAvatar={message.userAvatar}/> )
 
     return (
         <div className={style.dialogs}>
