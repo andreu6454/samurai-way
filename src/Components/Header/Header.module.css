@@ -1,7 +1,9 @@
 header img{
+    padding-left: 5px;
     width: 60px;
 }
 .appHeader{
     grid-area: header;
     background-color: cadetblue;
+    border-radius: 5px;
 }

@@ -1,8 +1,4 @@
-.NewPost{
-    padding: 10px;
-}
-.Input{
+.Button{
     background-color: darkgray;
-    width: 300px;
     border-radius: 5px;
 }

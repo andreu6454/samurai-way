@@ -1,7 +1,9 @@
 .appNav{
     grid-area: nav;
     background-color: cadetblue;
+    margin: 10px 5px 0 0;
     padding: 20px;
+    border-radius: 5px;
 }
 .item{
     color: #3b3939;

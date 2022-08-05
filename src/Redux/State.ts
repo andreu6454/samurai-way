@@ -1,3 +1,5 @@
+import {v1} from "uuid";
+
 export type StateDataType = {
     ProfilePage: ProfilePageDataType
     MessagesPage: MessagesPageDataType
@@ -30,7 +32,7 @@ export type MessageDataType = {
     message: string
 }
 export type PostsDataType = {
-    id: number,
+    id: string,
     message: string,
     likesCount: number
 }
@@ -38,9 +40,9 @@ export type PostsDataType = {
 export const state = {
     ProfilePage: {
         PostsData: [
-            {id: 1, message: "Hello", likesCount: 10},
-            {id: 2, message: "How are you?", likesCount: 5},
-            {id: 3, message: "good", likesCount: 14}
+            {id: v1(), message: "Hello", likesCount: 10},
+            {id: v1(), message: "How are you?", likesCount: 5},
+            {id: v1(), message: "good", likesCount: 14}
         ]
     },
     MessagesPage: {

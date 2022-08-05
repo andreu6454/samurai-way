@@ -1,14 +1,33 @@
-import React from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from "./NewPosts.module.css"
+import Button from "../../../Items/Buttons/Button";
 
-const NewPost = () => {
+type NewPostPropsType = {
+    addPost: (postData: string) => void
+}
+
+const NewPost = (props:NewPostPropsType) => {
+    const [postData,setPostData] = useState("")
+
+    const onClickAddPost = () => {
+        postData !== "" && props.addPost(postData)
+        setPostData("")
+    }
+    const onKeyDownAddPost = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        e.key === "Enter" && onClickAddPost()
+    }
+
+    const onChangeSetPost = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setPostData(e.currentTarget.value)
+    }
+
     return (
         <div className={style.NewPost}>
             <div>
-                <textarea defaultValue={"New Post"}/>
+                <textarea placeholder={"Whats new?"} onChange={onChangeSetPost} onKeyPress={onKeyDownAddPost} value={postData} className={style.Input}/>
             </div>
             <div>
-                <button>Send</button>
+                <Button buttonFunction={() => onClickAddPost()} buttonName={"Post"} />
             </div>
         </div>
     );
