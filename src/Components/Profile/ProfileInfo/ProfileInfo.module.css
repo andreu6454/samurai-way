@@ -5,6 +5,7 @@
     background-color: #3b3939;
     border-radius: 5px;
     display: flex;
+    margin-top: 10px;
 }
 .ProfileInfo{
     color: white;
