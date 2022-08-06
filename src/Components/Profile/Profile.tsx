@@ -17,7 +17,7 @@ const Profile = (props: ProfilePropsType) => {
         const newTask: PostsDataType = {
             id: v1(),
             message: post,
-            likesCount: 0
+            likesCount: 999
         }
         setPosts([newTask, ...posts])
     }
