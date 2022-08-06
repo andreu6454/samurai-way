@@ -1,3 +1,44 @@
-.DescriptionBlock{
+.AvatarBlock{
     padding: 10px;
+}
+.ProfileBlock{
+    background-color: #3b3939;
+    border-radius: 5px;
+    display: flex;
+}
+.ProfileInfo{
+    color: white;
+    display: flex;
+}
+.DescriptionBlock{
+    width: 560px;
+}
+.MainName{
+    font-family: "Apple Symbols";
+    font-size: 35px;
+    margin: 10px;
+    height: 40px;
+}
+.OnlineStatus{
+    align-items: center;
+    display: flex;
+    margin-bottom: 10px;
+    height: 40px;
+}
+.OnlineStatusActive{
+    margin-top: 1px;
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: cornflowerblue;
+}
+.ProfileDescription{
+    display: flex;
+}
+.DescriptionPoints{
+    margin-right: 40px;
+}
+.Item{
+    margin-bottom: 15px;
 }

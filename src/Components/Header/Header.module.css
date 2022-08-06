@@ -1,6 +1,6 @@
 header img{
-    padding-left: 5px;
     width: 60px;
+    border-radius: 5px 0 0 5px;
 }
 .appHeader{
     grid-area: header;
