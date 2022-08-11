@@ -1,11 +1,11 @@
 import React from 'react';
 import style from "./Friends.module.css"
 import FriendBlock from "./FriendBlock/FriendBlock";
-import {FriendsDataType} from "../../Redux/State";
-import FriendsAddBlock from "./FriendsAddBlock/FriendsAddBlock";
+import {FriendsPageDataType} from "../../Redux/State";
+import FriendsRequestsBlock from "./FriendsRequestsBlock/FriendsRequestsBlock";
 
 type FriendsPropsType = {
-    state: FriendsDataType
+    state: FriendsPageDataType
 }
 const Friends = (props: FriendsPropsType) => {
     const friends = props.state.FriendsData.map(friend =>
@@ -17,7 +17,7 @@ const Friends = (props: FriendsPropsType) => {
                 {friends}
             </div>
             <div className={style.FriendsAddBlock}>
-                <FriendsAddBlock/>
+                <FriendsRequestsBlock state={props.state.FriendsRequest}/>
             </div>
         </div>
     );
