@@ -1,0 +1,27 @@
+.FriendBlock{
+    width: 500px;
+    height: 100px;
+    background-color: #3b3939;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+}
+.avatar img{
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+.content{
+    padding: 5px;
+    width: 390px;
+}
+.NameSurname{
+    font-size: 25px;
+    font-family: "Apple Symbols";
+    color: white;
+}
+.links a{
+    color: dodgerblue;
+    text-decoration: none;
+}

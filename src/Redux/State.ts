@@ -4,6 +4,7 @@ export type StateDataType = {
     ProfilePage: ProfilePageDataType
     MessagesPage: MessagesPageDataType
     NavBarPage: NavBarDataType
+    FriendsPage: FriendsDataType
 }
 export type NavBarDataType = {
     NavBarData: Array<NavBarType>
@@ -36,7 +37,15 @@ export type PostsDataType = {
     message: string,
     likesCount: number
 }
-
+export type FriendsDataType = {
+    FriendsData: Array<FriendsType>
+}
+export type FriendsType = {
+    id: string
+    friend: string,
+    surname: string,
+    avatar: string
+}
 export const state = {
     ProfilePage: {
         PostsData: [
@@ -54,7 +63,7 @@ export const state = {
         MessageData: [
             {id: 1, userId: 1, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg", message: "hello"},
             {id: 2, userId: 1, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg", message: "How are you?"},
-            {id: 3, userId: 2, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg", message: "Yoooooooooo"}
+            {id: 3, userId: 2, userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg", message: "Just message."}
         ]
     },
     NavBarPage: {
@@ -62,6 +71,13 @@ export const state = {
             {id: "1", friend: "Andrey", avatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg"},
             {id: "2", friend: "Vlad", avatar: "https://android-obzor.com/wp-content/uploads/2022/02/28-2.jpg"},
             {id: "3", friend: "Kolya", avatar: "https://klike.net/uploads/posts/2019-03/medium/1551512888_2.jpg"}
+        ]
+    },
+    FriendsPage: {
+        FriendsData: [
+            {id: "1", friend: "Andrey", surname: "Malin", avatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg"},
+            {id: "2", friend: "Vlad", surname: "Rudenko", avatar: "https://android-obzor.com/wp-content/uploads/2022/02/28-2.jpg"},
+            {id: "3", friend: "Kolya", surname: "Cleivin", avatar: "https://klike.net/uploads/posts/2019-03/medium/1551512888_2.jpg"},
         ]
     }
 }

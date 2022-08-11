@@ -27,7 +27,7 @@ function App(props: AppPropsType) {
                     <Route path={"/news"}> <News /> </Route>
                     <Route path={"/music"}> <Music /> </Route>
                     <Route path={"/settings"}> <Settings /> </Route>
-                    <Route path={"/friends"}> <Friends /> </Route>
+                    <Route path={"/friends"}> <Friends state={props.state.FriendsPage}/> </Route>
                 </div>
             </div>
         </BrowserRouter>
