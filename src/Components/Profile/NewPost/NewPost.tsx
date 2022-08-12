@@ -10,7 +10,7 @@ const NewPost = (props:NewPostPropsType) => {
     const [postData,setPostData] = useState("")
 
     const onClickAddPost = () => {
-        postData !== "" && props.addPost(postData)
+        postData.trim() !== "" && props.addPost(postData)
         setPostData("")
     }
     const onKeyDownAddPost = (e: KeyboardEvent<HTMLTextAreaElement>) => {
