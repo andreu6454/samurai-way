@@ -5,6 +5,7 @@
     background-color: darkseagreen;
     border-radius: 15px;
     padding: 5px;
+    margin-left: 10px;
     margin-bottom: 5px;
 }
 .userAvatar{
@@ -27,5 +28,5 @@
     border-radius: 15px;
     padding: 5px;
     margin-bottom: 5px;
-    margin-left: 200px;
+    margin-left: 180px;
 }

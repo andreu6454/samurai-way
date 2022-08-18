@@ -10,9 +10,10 @@
     width: 600px;
     margin: auto;
 }
-.messagesZone{
-    padding: 10px;
+.messagesZone{;
     width: 600px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 15px;
     background-color: #3b3939;
 }
