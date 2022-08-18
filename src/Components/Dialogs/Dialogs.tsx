@@ -34,7 +34,7 @@ const Dialogs = (props: DialogsPropsType) => {
         const newMessage: MessageDataType = {
             id: count,
             userId: 2,
-            userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg",
+            userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg",
             message: message.trim()
         }
         count++;
@@ -51,11 +51,14 @@ const Dialogs = (props: DialogsPropsType) => {
                 {Dialogs}
             </div>
             <div className={style.messages}>
-                {Messages}
+                <div className={style.messagesZone}>
+                    {Messages}
+                </div>
+
                 <div className={style.InputZone}>
                     <textarea onChange={onChangeHandler} value={message} placeholder={"Your Message"}
                               onKeyPress={onKeyDownHandler}></textarea>
-                    <button onClick={onClickAddMessage}> sent</button>
+                    <button onClick={onClickAddMessage}> Send </button>
                 </div>
             </div>
 
