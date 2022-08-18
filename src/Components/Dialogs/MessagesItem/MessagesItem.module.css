@@ -19,3 +19,13 @@
     margin-left: 10px;
     width: 330px;
 }
+.myMessage{
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    background-color: darkseagreen;
+    border-radius: 15px;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-left: 200px;
+}

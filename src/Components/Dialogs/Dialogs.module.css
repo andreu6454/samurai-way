@@ -7,4 +7,30 @@
 }
 .messages{
     padding: 10px;
+    width: 600px;
+    margin: auto;
+}
+.myMessage{
+    margin-left: 30px;
+}
+.messages textarea{
+    width: 500px;
+    background-color: darkgray;
+    height: 40px;
+    margin: 7px 0 5px 10px;
+    border-radius: 15px;
+}
+.InputZone{
+    width: 600px;
+    height: 60px;
+    display: flex;
+    background-color: #3b3939;
+    border-radius: 15px;
+}
+.InputZone button{
+    width: 60px;
+    height: 30px;
+    margin: 15px 10px 20px auto;
+    border-radius: 15px;
+    background-color: darkgray;
 }
