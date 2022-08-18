@@ -14,7 +14,7 @@
     width: 600px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #3b3939;
 }
 .myMessage{
@@ -25,21 +25,22 @@
     background-color: darkgray;
     height: 30px;
     margin: 7px 0 0 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 5px;
 }
 .InputZone{
     margin-top: 10px;
     width: 600px;
-    min-height: 60px;
+    min-height: 50px;
     display: flex;
     background-color: #3b3939;
-    border-radius: 15px;
+    border-radius: 5px;
+    padding-bottom: 10px;
 }
 .InputZone button{
     width: 60px;
     height: 30px;
     margin: 15px 10px 0 auto;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: darkgray;
 }
