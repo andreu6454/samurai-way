@@ -13,6 +13,7 @@ const Dialogs = (props: DialogsPropsType) => {
     let count = 4;
     const [messageData, dispatchMessageData] = useReducer(messagesReducer,props.state.MessageData)
     const [message, setMessage] = useState<string>("")
+
     const Dialogs = props.state.DialogsData.map(dialog =>
         <DialogsItem
             name={dialog.name}

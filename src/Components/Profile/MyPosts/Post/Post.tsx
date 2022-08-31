@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from "./Post.module.css"
 
 type PostPropsType = {
@@ -6,6 +6,17 @@ type PostPropsType = {
     likes: number
 }
 const Post = (props: PostPropsType) => {
+
+    const [likesCount,setLikesCount] = useState(props.likes)
+    const [canPressed, setCanPressed] = useState(true)
+    const onClickHandler = () => {
+        if(canPressed){
+            let likes = likesCount  + 1
+            setLikesCount(likes)
+            setCanPressed(false)
+        }
+    }
+
     return (
         <div className={style.item}>
             <div className={style.Message}>
@@ -23,8 +34,8 @@ const Post = (props: PostPropsType) => {
                 {props.message}
             </div>
             <div className={style.LikesCounter}>
-                <div className={style.heart}></div>
-                <div className={style.LikesCount}>{props.likes}</div>
+                <div className={style.heart} onClick={onClickHandler}></div>
+                <div className={style.LikesCount}>{likesCount}</div>
 
             </div>
         </div>
