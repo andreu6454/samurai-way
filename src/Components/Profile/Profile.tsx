@@ -4,7 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
 import {ProfilePageDataType} from "../../Redux/Types";
-import {addPostsAC, postsReducer} from "../../Reducers/postsReducer";
+import {addPostsAC, postsReducer} from "../../Reducers/profilePageReducer";
 
 type ProfilePropsType = {
     state: ProfilePageDataType

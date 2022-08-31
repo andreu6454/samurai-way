@@ -3,7 +3,7 @@ import style from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
 import {MessagesPageDataType} from "../../Redux/Types";
-import {addMessageAC, messagesReducer} from "../../Reducers/messagesReducer";
+import {addMessageAC, messagesReducer} from "../../Reducers/messagePageReducer";
 
 type DialogsPropsType = {
     state: MessagesPageDataType
