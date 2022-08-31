@@ -1,7 +1,12 @@
 import {PostsDataType} from "../Redux/Types";
 import {v1} from "uuid";
 
-export const postsReducer = (state: Array<PostsDataType>, action: addPostsACType) =>{
+const initialState = [
+    {id: v1(), message: "Hello", likesCount: 10},
+    {id: v1(), message: "How are you?", likesCount: 5},
+    {id: v1(), message: "Just message.", likesCount: 14}
+]
+export const postsReducer = (state: Array<PostsDataType> = initialState, action: addPostsACType) =>{
     switch (action.type){
         case "ADD-POST":{
             const newPost: PostsDataType = {

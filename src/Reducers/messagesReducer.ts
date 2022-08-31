@@ -1,6 +1,26 @@
 import {MessageDataType} from "../Redux/Types";
 
-export const messagesReducer = (state: Array<MessageDataType>, action:addMessageACType) =>{
+const initialState = [
+    {
+        id: 1,
+        userId: 1,
+        userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg",
+        message: "hello"
+    },
+    {
+        id: 2,
+        userId: 1,
+        userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/9-1.jpg",
+        message: "How are you?"
+    },
+    {
+        id: 3,
+        userId: 2,
+        userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg",
+        message: "Just message."
+    }
+]
+export const messagesReducer = (state: Array<MessageDataType> = initialState, action:addMessageACType) =>{
     switch (action.type){
         case "ADD-MESSAGE":{
             const newMessage: MessageDataType = {
