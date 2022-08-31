@@ -1,5 +1,5 @@
 import React from 'react';
-import {FriendsType} from "../../../Redux/State";
+import {FriendsType} from "../../../Redux/Types";
 import style from "./FriendBlock.module.css"
 import {NavLink} from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./FriendsRequestsBlock.module.css"
-import {FriendsRequestType} from "../../../Redux/State";
+import {FriendsRequestType} from "../../../Redux/Types";
 import Request from "./Request/Request";
 
 type FriendsRequestBlock = {

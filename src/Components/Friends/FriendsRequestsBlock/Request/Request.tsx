@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./Requests.module.css"
-import {FriendsRequestType} from "../../../../Redux/State";
+import {FriendsRequestType} from "../../../../Redux/Types";
 import {NavLink} from "react-router-dom";
 
 type RequestPropsType = {

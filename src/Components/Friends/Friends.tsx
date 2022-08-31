@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./Friends.module.css"
 import FriendBlock from "./FriendBlock/FriendBlock";
-import {FriendsPageDataType} from "../../Redux/State";
+import {FriendsPageDataType} from "../../Redux/Types";
 import FriendsRequestsBlock from "./FriendsRequestsBlock/FriendsRequestsBlock";
 
 type FriendsPropsType = {

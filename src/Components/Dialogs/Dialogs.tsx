@@ -1,8 +1,9 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useReducer, useState} from 'react';
 import style from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import {MessageDataType, MessagesPageDataType} from "../../Redux/State";
+import {MessagesPageDataType} from "../../Redux/Types";
+import {addMessageAC, messagesReducer} from "../../Reducers/messagesReducer";
 
 type DialogsPropsType = {
     state: MessagesPageDataType
@@ -10,7 +11,7 @@ type DialogsPropsType = {
 
 const Dialogs = (props: DialogsPropsType) => {
     let count = 4;
-    const [messageData, setMessageData] = useState<Array<MessageDataType>>(props.state.MessageData)
+    const [messageData, dispatchMessageData] = useReducer(messagesReducer,props.state.MessageData)
     const [message, setMessage] = useState<string>("")
     const Dialogs = props.state.DialogsData.map(dialog =>
         <DialogsItem
@@ -31,14 +32,9 @@ const Dialogs = (props: DialogsPropsType) => {
         setMessage(e.currentTarget.value)
     }
     const onClickAddMessage = () => {
-        const newMessage: MessageDataType = {
-            id: count,
-            userId: 2,
-            userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg",
-            message: message.trim()
-        }
+        const id = count;
         count++;
-        message.trim() !== "" && setMessageData([...messageData, newMessage])
+        message.trim() !== "" && dispatchMessageData(addMessageAC(id,message.trim()))
         setMessage("")
     }
     const onKeyDownHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import style from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
-import {PostsDataType, ProfilePageDataType} from "../../Redux/State";
-import {v1} from "uuid";
+import {ProfilePageDataType} from "../../Redux/Types";
+import {addPostsAC, postsReducer} from "../../Reducers/postsReducer";
 
 type ProfilePropsType = {
     state: ProfilePageDataType
@@ -12,20 +12,17 @@ type ProfilePropsType = {
 
 const Profile = (props: ProfilePropsType) => {
 
-    const [posts, setPosts] = useState(props.state.PostsData)
+    const [posts, dispatchPosts] = useReducer(postsReducer, props.state.PostsData)
     const addPost = (post: string) => {
-        const newTask: PostsDataType = {
-            id: v1(),
-            message: post,
-            likesCount: 999
-        }
-        setPosts([newTask, ...posts])
+        dispatchPosts(addPostsAC(post))
     }
 
     return (
         <div>
             <div className={style.appImg}>
-                <img src={"https://media-exp1.licdn.com/dms/image/C4D1BAQGDmALg_8s-Yg/company-background_10000/0/1519799119530?e=2159024400&v=beta&t=4WV9YKR9L3PAEnppWmPPMk5xVnETtWvhZN8NexEzPwM"} alt={"content-header"}/>
+                <img
+                    src={"https://media-exp1.licdn.com/dms/image/C4D1BAQGDmALg_8s-Yg/company-background_10000/0/1519799119530?e=2159024400&v=beta&t=4WV9YKR9L3PAEnppWmPPMk5xVnETtWvhZN8NexEzPwM"}
+                    alt={"content-header"}/>
             </div>
             <div className={style.appContent}>
 
