@@ -3,5 +3,4 @@
 --Typescript
 --React
 --Redux
---Material-UI
 --gitHub, gitHub Pages
