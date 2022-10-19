@@ -1,5 +1,5 @@
 ## Social-Network Pet project
-### Using: 
+### Using:
 - Typescript
 - React
 - Redux
