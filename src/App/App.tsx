@@ -22,7 +22,7 @@ function App(props: AppPropsType) {
                 <Header/>
                 <Navbar state={props.state.NavBarPage}/>
                 <div className="app-wrapper-content">
-                    <Route path={"/dialogs"}> <Dialogs state={props.state.MessagesPage}/> </Route>
+                    <Route path={"/dialogs"}> <Dialogs /> </Route>
                     <Route path={"/profile"}> <Profile /> </Route>
                     <Route path={"/news"}> <News/> </Route>
                     <Route path={"/music"}> <Music/> </Route>
