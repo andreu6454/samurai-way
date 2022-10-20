@@ -1,20 +1,19 @@
-import React, {useReducer} from 'react';
+import React from 'react';
 import style from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
-import {ProfilePageDataType} from "../../Redux/Types";
-import {addPostsAC, postsReducer} from "../../Reducers/profilePageReducer";
+import {PostsDataType} from "../../Redux/Types";
+import {addPostsAC} from "../../Reducers/profilePageReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../Redux/ReduxState";
 
-type ProfilePropsType = {
-    state: ProfilePageDataType
-}
 
-const Profile = (props: ProfilePropsType) => {
-
-    const [posts, dispatchPosts] = useReducer(postsReducer, props.state.PostsData)
+const Profile = () => {
+    const posts = useSelector<AppRootStateType,Array<PostsDataType>>(state => state.ProfilePage.PostsData)
+    const dispatch = useDispatch()
     const addPost = (post: string) => {
-        dispatchPosts(addPostsAC(post))
+        dispatch(addPostsAC(post))
     }
 
     return (

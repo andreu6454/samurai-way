@@ -1,9 +1,11 @@
-import React, {ChangeEvent, KeyboardEvent, useReducer, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import {MessagesPageDataType} from "../../Redux/Types";
-import {addMessageAC, messagesReducer} from "../../Reducers/messagePageReducer";
+import {MessageDataType, MessagesPageDataType} from "../../Redux/Types";
+import {addMessageAC} from "../../Reducers/messagePageReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../Redux/ReduxState";
 
 type DialogsPropsType = {
     state: MessagesPageDataType
@@ -11,22 +13,25 @@ type DialogsPropsType = {
 
 const Dialogs = (props: DialogsPropsType) => {
     let count = 4;
-    const [messageData, dispatchMessageData] = useReducer(messagesReducer,props.state.MessageData)
+    const messageData = useSelector<AppRootStateType,Array<MessageDataType>>(state => state.MessagesPage.MessageData)
+    const dispatch = useDispatch()
+    // const [messageData, dispatchMessageData] = useReducer(messagesReducer,props.state.MessageData)
     const [message, setMessage] = useState<string>("")
 
     const Dialogs = props.state.DialogsData.map(dialog =>
-        <DialogsItem
+        (<DialogsItem
             name={dialog.name}
             id={dialog.id}
             avatar={dialog.avatar}
         />)
+    )
     const Messages = messageData.map(message =>
-        <MessagesItem
+        (<MessagesItem
             message={message.message}
             id={message.id}
             userId={message.userId}
             userAvatar={message.userAvatar}
-        />
+        />)
     )
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,7 +40,7 @@ const Dialogs = (props: DialogsPropsType) => {
     const onClickAddMessage = () => {
         const id = count;
         count++;
-        message.trim() !== "" && dispatchMessageData(addMessageAC(id,message.trim()))
+        message.trim() !== "" && dispatch(addMessageAC(id,message.trim()))
         setMessage("")
     }
     const onKeyDownHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
