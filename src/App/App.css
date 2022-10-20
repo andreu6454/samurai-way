@@ -17,4 +17,5 @@
 }
 body{
     background-color: #3b3939;
+    box-sizing: border-box;
 }
