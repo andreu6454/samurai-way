@@ -2,23 +2,19 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import {MessageDataType, MessagesPageDataType} from "../../Redux/Types";
+import {DialogsDataType, MessageDataType} from "../../Redux/Types";
 import {addMessageAC} from "../../Reducers/messagePageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 
-type DialogsPropsType = {
-    state: MessagesPageDataType
-}
-
-const Dialogs = (props: DialogsPropsType) => {
+const Dialogs = () => {
     let count = 4;
     const messageData = useSelector<AppRootStateType,Array<MessageDataType>>(state => state.MessagesPage.MessageData)
+    const dialogsData = useSelector<AppRootStateType,Array<DialogsDataType>>(state => state.MessagesPage.DialogsData)
     const dispatch = useDispatch()
-    // const [messageData, dispatchMessageData] = useReducer(messagesReducer,props.state.MessageData)
     const [message, setMessage] = useState<string>("")
 
-    const Dialogs = props.state.DialogsData.map(dialog =>
+    const Dialogs = dialogsData.map(dialog =>
         (<DialogsItem
             name={dialog.name}
             id={dialog.id}
