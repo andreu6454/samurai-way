@@ -2,6 +2,7 @@ import React from 'react';
 import style from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {NavBarDataType} from "../../Redux/Types";
+import {v1} from "uuid";
 
 type NavBarPropsType = {
     state: NavBarDataType
@@ -9,7 +10,7 @@ type NavBarPropsType = {
 
 const Navbar = (props: NavBarPropsType) => {
     const friends = props.state.NavBarData.map(friend =>
-        <div>
+        <div key={v1()}>
             <img
                 src={friend.avatar}
                 className={style.friendsImg}

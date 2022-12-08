@@ -6,6 +6,7 @@ import {UserType} from "../../Redux/Types";
 import User from "./User/User";
 import {userApi} from "../../Api/user-api";
 import {setUsersAC} from "../../Redux/Reducers/usersPageReducer";
+import {v1} from "uuid";
 
 const UsersPage = () => {
     const users = useSelector<AppRootStateType, Array<UserType>>(state => state.UsersPage.users)
@@ -14,13 +15,14 @@ const UsersPage = () => {
     useEffect(() => {
         userApi.getUsers().then(
             (res) => {
-                console.log(res)
                 dispatch(setUsersAC(res.data.items))
+        }).catch((error)=> {
+            console.log(error)
         })
     }, [])
 
     let mappedUsers = users.map((user) => {
-        return <User user={user}></User>
+        return <User user={user} key={v1()}/>
     })
     return (
         <div className={style.userPage}>
