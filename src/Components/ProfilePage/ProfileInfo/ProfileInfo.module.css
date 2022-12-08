@@ -15,7 +15,7 @@
     width: 560px;
 }
 .MainName{
-    font-family: "Apple Symbols";
+    font-family: "Apple Symbols", system-ui;
     font-size: 35px;
     margin: 10px;
     height: 40px;

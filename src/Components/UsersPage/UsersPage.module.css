@@ -1,0 +1,12 @@
+.userPage{
+    padding: 20px 60px;
+    box-sizing: border-box;
+}
+.title{
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+}
+.usersContainer{
+    margin-left: 20px;
+}

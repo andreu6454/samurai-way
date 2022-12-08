@@ -3,6 +3,7 @@ export type StateDataType = {
     MessagesPage: MessagesPageDataType
     NavBarPage: NavBarDataType
     FriendsPage: FriendsPageDataType
+    UsersPage: UsersPageType
 }
 export type NavBarDataType = {
     NavBarData: Array<NavBarType>
@@ -51,4 +52,15 @@ export type FriendsRequestType = {
     id: string,
     avatar: string,
     mutualFriends: number
+}
+export type UserType = {
+    id: number,
+    followed: boolean,
+    fullName: string,
+    status: string,
+    location: { city: string, country: string },
+    photoUrl: string
+}
+export type UsersPageType = {
+    users: Array<UserType>
 }

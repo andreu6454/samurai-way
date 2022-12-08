@@ -86,7 +86,42 @@ export const InitialState = {
                 mutualFriends: 6,
                 avatar: "https://sun9-61.userapi.com/impf/c858324/v858324427/74ad2/g-a9YdAaqgI.jpg?size=1535x2048&quality=96&sign=3b38bffb492db587fda1793fbcae825c&type=album"
             },
+        ],
+    },
+    UsersPage: {
+        users: [
+            {
+                id: 1,
+                followed: true,
+                fullName: "Andrey",
+                status: "Just coding...",
+                location: {city: "Saint-Petersburg", country: "Russia"},
+                photoUrl: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg"
+            },
+            {
+                id: 2,
+                followed: false,
+                fullName: "Name2",
+                status: "string for status2",
+                location: {city: "Moscow", country: "Russia"},
+                photoUrl: "https://avatars.mds.yandex.net/get-images-cbir/5553011/nfAmh0Myp3bzLn2yIAMlHg8543/ocr"
+            },
+            {
+                id: 3,
+                followed: false,
+                fullName: "Name3",
+                status: "string for status3",
+                location: {city: "City", country: "Country"},
+                photoUrl: "https://avatars.mds.yandex.net/get-images-cbir/5553011/nfAmh0Myp3bzLn2yIAMlHg8543/ocr"
+            },
+            {
+                id: 4,
+                followed: false,
+                fullName: "Name4",
+                status: "string for status4",
+                location: {city: "Minsk", country: "Belarus"},
+                photoUrl: "https://avatars.mds.yandex.net/get-images-cbir/5553011/nfAmh0Myp3bzLn2yIAMlHg8543/ocr"
+            },
         ]
-
     }
 }

@@ -16,7 +16,7 @@
     border-radius: 5px;
 }
 .MessageName{
-    font-family: "Apple Symbols";
+    font-family: "Apple Symbols", system-ui;
     margin-top: 5px;
     font-size: 25px;
     color: white;

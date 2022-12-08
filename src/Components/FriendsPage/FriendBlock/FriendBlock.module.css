@@ -18,7 +18,7 @@
 }
 .NameSurname{
     font-size: 25px;
-    font-family: "Apple Symbols";
+    font-family: "Apple Symbols", system-ui;
     color: white;
 }
 .links a{
