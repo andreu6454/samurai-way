@@ -56,10 +56,12 @@ export type FriendsRequestType = {
 export type UserType = {
     id: number,
     followed: boolean,
-    fullName: string,
+    name: string,
     status: string,
-    location: { city: string, country: string },
-    photoUrl: string
+    photos: {
+        small: string,
+        large: string
+    }
 }
 export type UsersPageType = {
     users: Array<UserType>

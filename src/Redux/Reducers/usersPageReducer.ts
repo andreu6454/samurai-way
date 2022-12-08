@@ -1,7 +1,9 @@
-import {InitialState} from "../InitialState";
 import {UsersPageType, UserType} from "../Types";
 
-const initialState = InitialState.UsersPage
+
+const initialState = {
+    users : [] as UserType[]
+} as UsersPageType
 
 type usersPageReducerActionType = FollowACType | UnFollowACType | SetUsersACType
 export const usersPageReducer = (state: UsersPageType = initialState, action: usersPageReducerActionType) => {
@@ -43,10 +45,10 @@ export const unFollowAC = (userId: number) => {
 }
 export type UnFollowACType = ReturnType<typeof unFollowAC>
 
-export const setUsers = (users: Array<UserType>) => {
+export const setUsersAC = (users: Array<UserType>) => {
     return {
         type: "SET-USERS",
         users
     } as const
 }
-export type SetUsersACType = ReturnType<typeof setUsers>
+export type SetUsersACType = ReturnType<typeof setUsersAC>

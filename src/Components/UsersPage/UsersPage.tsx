@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import style from './UsersPage.module.css'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 import {UserType} from "../../Redux/Types";
 import User from "./User/User";
+import {userApi} from "../../Api/user-api";
+import {setUsersAC} from "../../Redux/Reducers/usersPageReducer";
 
 const UsersPage = () => {
     const users = useSelector<AppRootStateType, Array<UserType>>(state => state.UsersPage.users)
+    const dispatch = useDispatch()
 
-    let mappedUsers = users.map((user)=> {
+    useEffect(() => {
+        userApi.getUsers().then(
+            (res) => {
+                console.log(res)
+                dispatch(setUsersAC(res.data.items))
+        })
+    }, [])
+
+    let mappedUsers = users.map((user) => {
         return <User user={user}></User>
     })
     return (
@@ -19,7 +30,6 @@ const UsersPage = () => {
             <div className={style.usersContainer}>
                 {mappedUsers}
             </div>
-
         </div>
     );
 };
