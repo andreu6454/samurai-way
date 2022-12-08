@@ -1,5 +1,5 @@
-import {NavBarDataType} from "../Redux/Types";
-import {InitialState} from "../Redux/InitialState";
+import {NavBarDataType} from "../Types";
+import {InitialState} from "../InitialState";
 
 const initialState =  InitialState.NavBarPage
 

@@ -1,5 +1,5 @@
-import {FriendsPageDataType} from "../Redux/Types";
-import {InitialState} from "../Redux/InitialState";
+import {FriendsPageDataType} from "../Types";
+import {InitialState} from "../InitialState";
 
 const initialState = InitialState.FriendsPage
 

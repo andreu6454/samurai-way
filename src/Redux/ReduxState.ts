@@ -1,8 +1,8 @@
 import {combineReducers, createStore} from "redux";
-import {navbarPageReducer} from "../Reducers/navbarPageReducer";
-import {friendsPageReducer} from "../Reducers/friendsPageReducer";
-import {profilePageReducer} from "../Reducers/profilePageReducer";
-import {messagePageReducer} from "../Reducers/messagePageReducer";
+import {navbarPageReducer} from "./Reducers/navbarPageReducer";
+import {friendsPageReducer} from "./Reducers/friendsPageReducer";
+import {profilePageReducer} from "./Reducers/profilePageReducer";
+import {messagePageReducer} from "./Reducers/messagePageReducer";
 
 export let reducers = combineReducers({
     ProfilePage: profilePageReducer,

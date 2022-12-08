@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from "../Dialogs.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../Redux/ReduxState";
-import {addMessageAC} from "../../../Reducers/messagePageReducer";
+import {addMessageAC} from "../../../Redux/Reducers/messagePageReducer";
 import Messages from "./Messages/Messages";
 
 const MessagesContainer = () => {

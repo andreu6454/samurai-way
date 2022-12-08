@@ -4,7 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
 import {PostsDataType} from "../../Redux/Types";
-import {addPostsAC} from "../../Reducers/profilePageReducer";
+import {addPostsAC} from "../../Redux/Reducers/profilePageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 

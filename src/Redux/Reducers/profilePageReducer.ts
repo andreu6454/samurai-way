@@ -1,6 +1,6 @@
-import {PostsDataType, ProfilePageDataType} from "../Redux/Types";
+import {PostsDataType, ProfilePageDataType} from "../Types";
 import {v1} from "uuid";
-import {InitialState} from "../Redux/InitialState";
+import {InitialState} from "../InitialState";
 
 const initialState = InitialState.ProfilePage
 
