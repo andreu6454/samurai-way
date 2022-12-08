@@ -7,7 +7,7 @@ import FriendsRequestsBlock from "./FriendsRequestsBlock/FriendsRequestsBlock";
 type FriendsPropsType = {
     state: FriendsPageDataType
 }
-const Friends = (props: FriendsPropsType) => {
+const FriendsPage = (props: FriendsPropsType) => {
     const friends = props.state.FriendsData.map(friend =>
         <FriendBlock state={friend}/>
     )
@@ -23,4 +23,4 @@ const Friends = (props: FriendsPropsType) => {
     );
 };
 
-export default Friends;
+export default FriendsPage;

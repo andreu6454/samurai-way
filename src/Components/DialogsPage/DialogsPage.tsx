@@ -3,7 +3,7 @@ import style from './Dialogs.module.css'
 import DialogsContainer from "./DialogsContainer/DialogsContainer";
 import MessagesContainer from "./MessagesContainer/MessagesContainer";
 
-const Dialogs = () => {
+const DialogsPage = () => {
     return (
         <div className={style.dialogs}>
             <DialogsContainer/>
@@ -12,4 +12,4 @@ const Dialogs = () => {
     );
 };
 
-export default Dialogs;
+export default DialogsPage;

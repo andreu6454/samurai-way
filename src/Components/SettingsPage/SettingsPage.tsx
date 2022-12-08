@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Settings.module.css'
 
-const Settings = () => {
+const SettingsPage = () => {
     return (
         <div className={style.settingsModule}>
             <h1>Settings Page</h1>
@@ -9,4 +9,4 @@ const Settings = () => {
     );
 };
 
-export default Settings;
+export default SettingsPage;

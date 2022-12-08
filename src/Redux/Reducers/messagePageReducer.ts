@@ -14,7 +14,7 @@ export const messagePageReducer = (state: MessagesPageDataType = initialState, a
                 userAvatar: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg",
                 message: action.payload.message
             }
-            return {...state, MessageData: [...state.MessageData,newMessage], DialogsData:[...state.DialogsData]}
+            return {...state, MessageData: [...state.MessageData,newMessage]}
         }
         default: return state
     }

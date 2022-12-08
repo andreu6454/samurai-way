@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 
 
-const Profile = () => {
+const ProfilePage = () => {
     const posts = useSelector<AppRootStateType,Array<PostsDataType>>(state => state.ProfilePage.PostsData)
     const dispatch = useDispatch()
     const addPost = (post: string) => {
@@ -34,4 +34,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default ProfilePage;
