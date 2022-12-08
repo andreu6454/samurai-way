@@ -1,7 +1,7 @@
 import {MessageDataType, MessagesPageDataType} from "../Redux/Types";
-import {state} from "../Redux/State";
+import {InitialState} from "../Redux/InitialState";
 
-const initialState = state.MessagesPage
+const initialState = InitialState.MessagesPage
 
 type MessagePageReducerType = addMessageACType
 

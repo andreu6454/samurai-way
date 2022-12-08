@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 
-export const state = {
+export const InitialState = {
     ProfilePage: {
         PostsData: [
             {id: v1(), message: "Hello", likesCount: 10},

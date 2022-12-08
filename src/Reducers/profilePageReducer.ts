@@ -1,8 +1,8 @@
 import {PostsDataType, ProfilePageDataType} from "../Redux/Types";
 import {v1} from "uuid";
-import {state} from "../Redux/State";
+import {InitialState} from "../Redux/InitialState";
 
-const initialState = state.ProfilePage
+const initialState = InitialState.ProfilePage
 
 type ProfilePageReducerType = addPostsACType
 
@@ -12,7 +12,7 @@ export const profilePageReducer = (state: ProfilePageDataType = initialState, ac
             const newPost: PostsDataType = {
                 id: v1(),
                 message: action.payload.post,
-                likesCount: 999
+                likesCount: 0
             }
             return {...state, PostsData: [newPost,...state.PostsData]};
         }
