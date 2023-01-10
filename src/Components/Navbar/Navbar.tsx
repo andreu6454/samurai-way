@@ -3,6 +3,7 @@ import style from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {NavBarDataType} from "../../Redux/Types";
 import {v1} from "uuid";
+import StyledLink from "../../Items/StyledLink/StyledLink";
 
 type NavBarPropsType = {
     state: NavBarDataType
@@ -22,29 +23,17 @@ const Navbar = (props: NavBarPropsType) => {
     return (
         <nav className={style.appNav}>
 
-            <div className={style.item}>
-                <NavLink to="/profile" activeClassName={style.active}>Profile</NavLink>
-            </div>
+            <StyledLink redirectTo={"/profile"} title={"Profile"}/>
 
-            <div className={style.item}>
-                <NavLink to="/dialogs" activeClassName={style.active}>Messages</NavLink>
-            </div>
+            <StyledLink redirectTo={"/dialogs"} title={"Messages"}/>
 
-            <div className={style.item}>
-                <NavLink to="/news" activeClassName={style.active}>News</NavLink>
-            </div>
+            <StyledLink redirectTo={"/news"} title={"News"}/>
 
-            <div className={style.item}>
-                <NavLink to="/music" activeClassName={style.active}>Music</NavLink>
-            </div>
+            <StyledLink redirectTo={"/music"} title={"Music"}/>
 
-            <div className={style.item}>
-                <NavLink to="/settings" activeClassName={style.active}>Settings</NavLink>
-            </div>
+            <StyledLink redirectTo={"/settings"} title={"Settings"}/>
 
-            <div className={style.item}>
-                <NavLink to="/users" activeClassName={style.active}>Users</NavLink>
-            </div>
+            <StyledLink redirectTo={"/users"} title={"Users"}/>
 
             <div className={style.friendsBlock}>
                 <div className={style.item}>
