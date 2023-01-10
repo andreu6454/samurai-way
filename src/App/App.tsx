@@ -4,7 +4,7 @@ import Header from "../Components/Header/Header";
 import Navbar from "../Components/Navbar/Navbar";
 import ProfilePage from "../Components/ProfilePage/ProfilePage";
 import DialogsPage from "../Components/DialogsPage/DialogsPage";
-import {BrowserRouter, Redirect, Route} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import NewsPage from "../Components/NewsPage/NewsPage";
 import MusicPage from "../Components/MusicPage/MusicPage";
 import SettingsPage from "../Components/SettingsPage/SettingsPage";
@@ -23,14 +23,19 @@ function App(props: AppPropsType) {
                 <Header/>
                 <Navbar state={props.state.NavBarPage}/>
                 <div className="app-wrapper-content">
-                    <Route path={"/"}><Redirect to={"/profile"}/></Route>
-                    <Route path={"/dialogs"}> <DialogsPage/> </Route>
-                    <Route path={"/profile"}> <ProfilePage/> </Route>
-                    <Route path={"/news"}> <NewsPage/> </Route>
-                    <Route path={"/music"}> <MusicPage/> </Route>
-                    <Route path={"/settings"}> <SettingsPage/> </Route>
-                    <Route path={"/friends"}> <FriendsPage state={props.state.FriendsPage}/> </Route>
-                    <Route path={"/users"}> <UsersPage/></Route>
+                    <Switch>
+                        <Route exact path={"/"}><Redirect to={"/profile"}/></Route>
+                        <Route path={"/dialogs"}> <DialogsPage/> </Route>
+                        <Route path={"/profile"}> <ProfilePage/> </Route>
+                        <Route path={"/news"}> <NewsPage/> </Route>
+                        <Route path={"/music"}> <MusicPage/> </Route>
+                        <Route path={"/settings"}> <SettingsPage/> </Route>
+                        <Route path={"/friends"}> <FriendsPage state={props.state.FriendsPage}/> </Route>
+                        <Route path={"/users"}> <UsersPage/></Route>
+                        <Route exact path={"*"}>
+                            <div style={{textAlign: "center", marginTop: "50px"}}> 404: page not found</div>
+                        </Route>
+                    </Switch>
                 </div>
             </div>
         </BrowserRouter>
