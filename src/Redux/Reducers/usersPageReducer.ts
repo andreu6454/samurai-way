@@ -5,7 +5,7 @@ const initialState = {
     users: [] as UserType[],
     pageSize: 10,
     totalUsersCount: 20,
-    currentPage: 3
+    currentPage: 1
 } as UsersPageType
 
 type usersPageReducerActionType =
