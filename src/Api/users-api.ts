@@ -6,9 +6,9 @@ const instance = axios.create({
     withCredentials: true,
 
 })
-export const userApi = {
-    getUsers() {
-        return instance.get<userResponseType>('/users')
+export const usersApi = {
+    getUsers(currentPage?: number,pageSize?: number) {
+        return instance.get<userResponseType>(`/users?page=${currentPage}&count=${pageSize}`)
     }
 }
 

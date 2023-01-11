@@ -64,5 +64,8 @@ export type UserType = {
     }
 }
 export type UsersPageType = {
-    users: Array<UserType>
+    users: Array<UserType>,
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number
 }
