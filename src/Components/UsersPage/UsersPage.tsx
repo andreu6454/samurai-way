@@ -60,7 +60,7 @@ const UsersPage = () => {
                 key={v1()}
                 className={p === currentPage ? style.selectedPage : style.page}
                 onClick={changePageHandle}
-            >{'...' + p} </div>
+            >{'... ' + p} </div>
         }
         return <div
             key={v1()}
