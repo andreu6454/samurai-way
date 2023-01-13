@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './User.module.css'
-import {UserType} from "../../../Redux/Types";
+import {UserType} from "../../../../Redux/Types";
 import {useDispatch} from "react-redux";
-import {followAC, unFollowAC} from "../../../Redux/Reducers/usersPageReducer";
+import {followAC, unFollowAC} from "../../../../Redux/Reducers/usersPageReducer";
 
 type UserPropsType = {
     user: UserType

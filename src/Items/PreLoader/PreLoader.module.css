@@ -1,0 +1,9 @@
+.preLoader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.preLoaderImg{
+    width: 80px;
+    height: 80px;
+}

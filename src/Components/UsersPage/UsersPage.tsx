@@ -2,27 +2,31 @@ import React, {useEffect} from 'react';
 import style from './UsersPage.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
-import {UsersPageType, UserType} from "../../Redux/Types";
-import User from "./User/User";
+import {UsersPageType} from "../../Redux/Types";
 import {usersApi} from "../../Api/users-api";
 import {setCurrentPageAC, setTotalUsersCountAC, setUsersAC} from "../../Redux/Reducers/usersPageReducer";
 import {v1} from "uuid";
+import {setIsLoadingAC} from "../../Redux/Reducers/appReducer";
+import Users from "./Users/Users";
+import PreLoader from "../../Items/PreLoader/PreLoader";
 
 const UsersPage = () => {
-    const users = useSelector<AppRootStateType, Array<UserType>>(state => state.UsersPage.users)
     const {
         pageSize,
         totalUsersCount,
         currentPage
     } = useSelector<AppRootStateType, UsersPageType>(state => state.UsersPage)
+    const isLoading = useSelector<AppRootStateType>(state => state.app.isLoading)
 
     const pagesCount = totalUsersCount / pageSize
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(setIsLoadingAC(true))
         usersApi.getUsers()
             .then(
                 (res) => {
+                    dispatch(setIsLoadingAC(false))
                     dispatch(setUsersAC(res.data.items))
                     dispatch(setTotalUsersCountAC(res.data.totalCount))
                 })
@@ -32,9 +36,11 @@ const UsersPage = () => {
     }, [])
 
     useEffect(() => {
+        dispatch(setIsLoadingAC(true))
         usersApi.getUsers(currentPage, pageSize)
             .then(
                 res => {
+                    dispatch(setIsLoadingAC(false))
                     dispatch(setUsersAC(res.data.items))
                 }
             )
@@ -52,10 +58,10 @@ const UsersPage = () => {
             dispatch(setCurrentPageAC(p))
         }
 
-        if(p > 10 && p !== pages.length){
+        if (p > 10 && p !== pages.length) {
             return
         }
-        if(p === pages.length){
+        if (p === pages.length) {
             return <div
                 key={v1()}
                 className={p === currentPage ? style.selectedPage : style.page}
@@ -69,21 +75,21 @@ const UsersPage = () => {
         > {p} </div>
     })
 
-    const mappedUsers = users.map((user) => {
-        return <User user={user} key={v1()}/>
-    })
 
     return (
         <div className={style.userPage}>
             <div className={style.title}>
                 Users:
             </div>
-            <div className={style.usersContainer}>
-                {mappedUsers}
-            </div>
-            <div className={style.pagination}>
-                {pagePagination}
-            </div>
+            {isLoading ?
+                <PreLoader/>
+                :
+                <>
+                    <Users/>
+                    <div className={style.pagination}>
+                        {pagePagination}
+                    </div>
+                </>}
         </div>
     );
 };
