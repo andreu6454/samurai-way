@@ -4,21 +4,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 import {UsersPageType} from "../../Redux/Types";
 import {usersApi} from "../../Api/users-api";
-import {setCurrentPageAC, setTotalUsersCountAC, setUsersAC} from "../../Redux/Reducers/usersPageReducer";
-import {v1} from "uuid";
+import {setTotalUsersCountAC, setUsersAC} from "../../Redux/Reducers/usersPageReducer";
 import {setIsLoadingAC} from "../../Redux/Reducers/appReducer";
 import Users from "./Users/Users";
 import PreLoader from "../../Items/PreLoader/PreLoader";
+import PagePagination from "../PagePagination/PagePagination";
 
 const UsersPage = () => {
     const {
         pageSize,
-        totalUsersCount,
         currentPage
     } = useSelector<AppRootStateType, UsersPageType>(state => state.UsersPage)
     const isLoading = useSelector<AppRootStateType>(state => state.app.isLoading)
 
-    const pagesCount = totalUsersCount / pageSize
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -49,32 +48,6 @@ const UsersPage = () => {
             })
     }, [currentPage, pageSize])
 
-    const pages = []
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-    const pagePagination = pages.map((p) => {
-        const changePageHandle = () => {
-            dispatch(setCurrentPageAC(p))
-        }
-
-        if (p > 10 && p !== pages.length) {
-            return
-        }
-        if (p === pages.length) {
-            return <div
-                key={v1()}
-                className={p === currentPage ? style.selectedPage : style.page}
-                onClick={changePageHandle}
-            >{'... ' + p} </div>
-        }
-        return <div
-            key={v1()}
-            className={p === currentPage ? style.selectedPage : style.page}
-            onClick={changePageHandle}
-        > {p} </div>
-    })
-
 
     return (
         <div className={style.userPage}>
@@ -86,9 +59,7 @@ const UsersPage = () => {
                 :
                 <>
                     <Users/>
-                    <div className={style.pagination}>
-                        {pagePagination}
-                    </div>
+                    <PagePagination/>
                 </>}
         </div>
     );
