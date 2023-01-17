@@ -30,7 +30,7 @@ const ProfilePage = withRouter(() => {
                 dispatch(setUserProfileAC(res.data))
             }
         )
-    }, [])
+    }, [userId])
 
     return (
         <div>

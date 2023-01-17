@@ -39,7 +39,7 @@ const ProfileInfo = () => {
                     </div>
                     <div className={style.OnlineStatus}>
                         online
-                        <div className={style.OnlineStatusActive}></div>
+                        <div className={style.OnlineStatusActive}/>
                     </div>
                 </div>
             </div>
