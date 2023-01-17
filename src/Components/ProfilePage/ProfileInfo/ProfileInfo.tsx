@@ -29,8 +29,10 @@ const ProfileInfo = () => {
                                 </div>
                                 <div>
                                     <div className={style.Item}> 09.12.2001</div>
-                                    <div className={style.Item}> {profileInfo.aboutMe? profileInfo.aboutMe : "about me" }</div>
-                                    <div className={style.Item}> {profileInfo.contacts.github? profileInfo.contacts.github : "andreu6454"}</div>
+                                    <div
+                                        className={style.Item}> {profileInfo.aboutMe ? profileInfo.aboutMe : "profile info should be here"}</div>
+                                    <div
+                                        className={style.Item}> {profileInfo.contacts.github ? profileInfo.contacts.github : "gitHub should be here"}</div>
                                 </div>
                             </div>
                         </div>

@@ -26,7 +26,7 @@ function App(props: AppPropsType) {
                     <Switch>
                         <Route exact path={"/"}><Redirect to={"/profile"}/></Route>
                         <Route path={"/dialogs"}> <DialogsPage/> </Route>
-                        <Route path={"/profile"}> <ProfilePage/> </Route>
+                        <Route path={"/profile/:userId"}> <ProfilePage/> </Route>
                         <Route path={"/news"}> <NewsPage/> </Route>
                         <Route path={"/music"}> <MusicPage/> </Route>
                         <Route path={"/settings"}> <SettingsPage/> </Route>

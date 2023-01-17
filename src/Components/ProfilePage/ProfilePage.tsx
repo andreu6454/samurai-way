@@ -10,21 +10,22 @@ import {AppRootStateType} from "../../Redux/ReduxState";
 import {usersApi} from "../../Api/users-api";
 import {setIsLoadingAC} from "../../Redux/Reducers/appReducer";
 import PreLoader from "../../Items/PreLoader/PreLoader";
+import {useParams, withRouter} from "react-router-dom";
 
 
-const ProfilePage = () => {
+const ProfilePage = withRouter(() => {
     const posts = useSelector<AppRootStateType, Array<PostsDataType>>(state => state.ProfilePage.PostsData)
     const isLoading = useSelector<AppRootStateType>(state => state.app.isLoading)
+    const {userId} = useParams<{ userId: string }>()
 
     const dispatch = useDispatch()
-
     const addPost = (post: string) => {
         dispatch(addPostsAC(post))
     }
 
     useEffect(() => {
         dispatch(setIsLoadingAC(true))
-        usersApi.getProfileInfo(27517).then((res) => {
+        usersApi.getProfileInfo(Number(userId)).then((res) => {
                 dispatch(setIsLoadingAC(false))
                 dispatch(setUserProfileAC(res.data))
             }
@@ -49,6 +50,6 @@ const ProfilePage = () => {
             }
         </div>
     );
-};
+});
 
 export default ProfilePage;

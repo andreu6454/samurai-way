@@ -23,7 +23,7 @@ const Navbar = (props: NavBarPropsType) => {
     return (
         <nav className={style.appNav}>
 
-            <StyledLink redirectTo={"/profile"} title={"Profile"}/>
+            <StyledLink redirectTo={"/profile/2"} title={"Profile"}/>
 
             <StyledLink redirectTo={"/dialogs"} title={"Messages"}/>
 
