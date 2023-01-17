@@ -63,4 +63,8 @@
 .status{
     font-size: 23px;
     font-family: "Apple Symbols", serif;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
