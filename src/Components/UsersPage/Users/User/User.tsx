@@ -3,6 +3,7 @@ import style from './User.module.css'
 import {UserType} from "../../../../Redux/Types";
 import {useDispatch} from "react-redux";
 import {followAC, unFollowAC} from "../../../../Redux/Reducers/usersPageReducer";
+import {NavLink} from "react-router-dom";
 
 type UserPropsType = {
     user: UserType
@@ -17,7 +18,9 @@ const User = ({user}: UserPropsType) => {
         <div className={style.user}>
             <span className={style.leftBlock}>
                 <div>
-                    <img src={user.photos.small? user.photos.small : altPhoto} alt={"Avatar"} className={style.avatar}/>
+                    <NavLink to={'/profile/'+ user.id}>
+                        <img src={user.photos.small? user.photos.small : altPhoto} alt={"Avatar"} className={style.avatar}/>
+                    </NavLink>
                 </div>
                 <button onClick={onClickHandler} className={style.followButton}>{user.followed? "Unfollow": "Follow"}</button>
             </span>
