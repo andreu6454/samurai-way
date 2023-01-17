@@ -24,13 +24,13 @@ const ProfileInfo = () => {
                             <div className={style.ProfileDescription}>
                                 <div className={style.DescriptionPoints}>
                                     <div className={style.Item}> Date of birth:</div>
-                                    <div className={style.Item}> City:</div>
+                                    <div className={style.Item}> About me:</div>
                                     <div className={style.Item}> GitHub:</div>
                                 </div>
                                 <div>
                                     <div className={style.Item}> 09.12.2001</div>
-                                    <div className={style.Item}> Saint-Petersburg</div>
-                                    <div className={style.Item}> {profileInfo.contacts.github}</div>
+                                    <div className={style.Item}> {profileInfo.aboutMe? profileInfo.aboutMe : "about me" }</div>
+                                    <div className={style.Item}> {profileInfo.contacts.github? profileInfo.contacts.github : "gitHub"}</div>
                                 </div>
                             </div>
                         </div>
