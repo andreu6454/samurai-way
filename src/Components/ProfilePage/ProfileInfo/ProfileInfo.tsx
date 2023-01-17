@@ -5,8 +5,8 @@ import {AppRootStateType} from "../../../Redux/ReduxState";
 import {profileInfoResponseType} from "../../../Api/users-api";
 
 const ProfileInfo = () => {
-
     const profileInfo = useSelector<AppRootStateType, profileInfoResponseType>(state => state.ProfilePage.userProfile)
+
     return (
         <div className={style.ProfileBlock}>
             <div className={style.AvatarBlock}>
@@ -41,7 +41,6 @@ const ProfileInfo = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };

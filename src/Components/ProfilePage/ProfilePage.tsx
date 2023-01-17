@@ -15,7 +15,9 @@ import PreLoader from "../../Items/PreLoader/PreLoader";
 const ProfilePage = () => {
     const posts = useSelector<AppRootStateType, Array<PostsDataType>>(state => state.ProfilePage.PostsData)
     const isLoading = useSelector<AppRootStateType>(state => state.app.isLoading)
+
     const dispatch = useDispatch()
+
     const addPost = (post: string) => {
         dispatch(addPostsAC(post))
     }
@@ -28,6 +30,7 @@ const ProfilePage = () => {
             }
         )
     }, [])
+
     return (
         <div>
             {isLoading ? <PreLoader/> :
@@ -38,15 +41,12 @@ const ProfilePage = () => {
                             alt={"content-header"}/>
                     </div>
                     <div className={style.appContent}>
-
                         <ProfileInfo/>
                         <NewPost addPost={addPost}/>
                         <MyPosts PostsData={posts}/>
-
                     </div>
                 </>
             }
-
         </div>
     );
 };
