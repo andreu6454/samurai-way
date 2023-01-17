@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import style from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
 import {PostsDataType} from "../../Redux/Types";
-import {addPostsAC} from "../../Redux/Reducers/profilePageReducer";
+import {addPostsAC, setUserProfileAC} from "../../Redux/Reducers/profilePageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
+import {usersApi} from "../../Api/users-api";
 
 
 const ProfilePage = () => {
@@ -16,6 +17,12 @@ const ProfilePage = () => {
         dispatch(addPostsAC(post))
     }
 
+    useEffect(()=>{
+        usersApi.getProfileInfo(27517).then((res)=>{
+            dispatch(setUserProfileAC(res.data))
+            }
+        )
+    },[])
     return (
         <div>
             <div className={style.appImg}>

@@ -1,3 +1,5 @@
+import {profileInfoResponseType} from "../Api/users-api";
+
 export type StateDataType = {
     ProfilePage: ProfilePageDataType
     MessagesPage: MessagesPageDataType
@@ -14,7 +16,8 @@ export type NavBarType = {
     avatar: string
 }
 export type ProfilePageDataType = {
-    PostsData: Array<PostsDataType>
+    PostsData: Array<PostsDataType>,
+    userProfile: profileInfoResponseType
 }
 export type MessagesPageDataType = {
     DialogsData: Array<DialogsDataType>

@@ -6,7 +6,28 @@ export const InitialState = {
             {id: v1(), message: "Hello", likesCount: 10},
             {id: v1(), message: "How are you?", likesCount: 5},
             {id: v1(), message: "Just message.", likesCount: 14}
-        ]
+        ],
+        userProfile: {
+            aboutMe: "",
+            contacts:{
+                facebook: "",
+                website: "",
+                vk: "",
+                twitter: "",
+                instagram: "",
+                youtube: "",
+                github: "",
+                mainLink: ""
+            },
+            lookingForAJob: false,
+            lookingForAJobDescription: "",
+            fullName: "",
+            userId: null,
+            photos:{
+                small: "",
+                large: ""
+            }
+        }
     },
     MessagesPage: {
         DialogsData: [
