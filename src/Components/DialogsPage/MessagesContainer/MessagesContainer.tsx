@@ -16,7 +16,6 @@ const MessagesContainer = () => {
         message.trim() !== "" && dispatch(addMessageAC(messageDataLength + 1,message.trim()))
         setMessage("")
     }
-    console.log(messageDataLength)
     const onKeyDownHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         e.key === "Enter" && onClickAddMessage()
     }

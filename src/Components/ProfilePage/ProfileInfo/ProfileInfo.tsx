@@ -30,7 +30,7 @@ const ProfileInfo = () => {
                                 <div>
                                     <div className={style.Item}> 09.12.2001</div>
                                     <div className={style.Item}> {profileInfo.aboutMe? profileInfo.aboutMe : "about me" }</div>
-                                    <div className={style.Item}> {profileInfo.contacts.github? profileInfo.contacts.github : "gitHub"}</div>
+                                    <div className={style.Item}> {profileInfo.contacts.github? profileInfo.contacts.github : "andreu6454"}</div>
                                 </div>
                             </div>
                         </div>
