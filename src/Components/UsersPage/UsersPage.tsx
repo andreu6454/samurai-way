@@ -4,28 +4,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 import {UsersPageType} from "../../Redux/Types";
 import {usersApi} from "../../Api/users-api";
-import {setTotalUsersCountAC, setUsersAC} from "../../Redux/Reducers/usersPageReducer";
-import {setIsLoadingAC} from "../../Redux/Reducers/appReducer";
+import {setCurrentPageAC, setTotalUsersCountAC, setUsersAC} from "../../Redux/Reducers/usersPageReducer";
 import Users from "./Users/Users";
-import PreLoader from "../../Items/PreLoader/PreLoader";
-import PagePagination from "../PagePagination/PagePagination";
+import {Pagination} from "@mui/material";
 
 const UsersPage = () => {
     const {
         pageSize,
-        currentPage
+        currentPage,
+        totalUsersCount
     } = useSelector<AppRootStateType, UsersPageType>(state => state.UsersPage)
-    const isLoading = useSelector<AppRootStateType>(state => state.app.isLoading)
-
+    const totalPagesCount = Math.ceil(totalUsersCount / pageSize)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setIsLoadingAC(true))
         usersApi.getUsers()
             .then(
                 (res) => {
-                    dispatch(setIsLoadingAC(false))
                     dispatch(setUsersAC(res.data.items))
                     dispatch(setTotalUsersCountAC(res.data.totalCount))
                 })
@@ -35,11 +31,9 @@ const UsersPage = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(setIsLoadingAC(true))
         usersApi.getUsers(currentPage, pageSize)
             .then(
                 res => {
-                    dispatch(setIsLoadingAC(false))
                     dispatch(setUsersAC(res.data.items))
                 }
             )
@@ -48,19 +42,18 @@ const UsersPage = () => {
             })
     }, [currentPage, pageSize])
 
+    const pageChangeHandle = (event: React.ChangeEvent<unknown>, page: number) => {
+        dispatch(setCurrentPageAC(page))
+    }
 
     return (
         <div className={style.userPage}>
             <div className={style.title}>
                 Users:
             </div>
-            {isLoading ?
-                <PreLoader/>
-                :
-                <>
-                    <Users/>
-                    <PagePagination/>
-                </>}
+            <Users/>
+            <Pagination page={currentPage} onChange={pageChangeHandle} sx={{mt: 3}} count={totalPagesCount}
+                        shape="rounded"/>
         </div>
     );
 };
