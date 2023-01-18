@@ -4,11 +4,9 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
 import {PostsDataType} from "../../Redux/Types";
-import {addPostsAC, setUserProfileAC} from "../../Redux/Reducers/profilePageReducer";
+import {addPostsAC, setUserProfileTC} from "../../Redux/Reducers/profilePageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
-import {usersApi} from "../../Api/users-api";
-import {setIsLoadingAC} from "../../Redux/Reducers/appReducer";
 import PreLoader from "../../Items/PreLoader/PreLoader";
 import {useParams, withRouter} from "react-router-dom";
 
@@ -24,12 +22,7 @@ const ProfilePage = withRouter(() => {
     }
 
     useEffect(() => {
-        dispatch(setIsLoadingAC(true))
-        usersApi.getProfileInfo(Number(userId)).then((res) => {
-                dispatch(setIsLoadingAC(false))
-                dispatch(setUserProfileAC(res.data))
-            }
-        )
+        dispatch(setUserProfileTC(Number(userId)))
     }, [userId])
 
     return (
