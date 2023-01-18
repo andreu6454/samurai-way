@@ -35,6 +35,9 @@
     transform: scale(90%);
     color: white;
 }
+.followButton:disabled{
+    opacity: 50%;
+}
 .rightBlock{
     border: 1px gray solid;
     border-radius: 5px;
