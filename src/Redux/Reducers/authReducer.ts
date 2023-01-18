@@ -43,7 +43,9 @@ type authReducerActionType = setUserDataACType
 export const setUsersDataTC = () => {
     return (dispatch: Dispatch) => {
         authApi.me().then((res) => {
-            dispatch(setUserDataAC(res.data.data))
+            if(res.data.resultCode === 0){
+                dispatch(setUserDataAC(res.data.data))
+            }
         })
     }
 }

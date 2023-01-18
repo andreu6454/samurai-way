@@ -26,9 +26,8 @@ const ProfilePage = withRouter(() => {
         dispatch(setUserProfileTC(Number(userId)))
     }, [userId])
 
-    if (!isAuth) {
-        console.log(isAuth)
-        return <Redirect to={'/login'}/>
+    if(!isAuth){
+        return <Redirect to={"/login"}/>
     }
     return (
         <div>

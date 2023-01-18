@@ -9,7 +9,7 @@ const LoginPage = () => {
     useEffect(() => {
         dispatch(setUsersDataTC())
     }, [])
-    //// временно
+    //// временно]
 
     return (
         <div>

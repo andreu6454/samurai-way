@@ -2,7 +2,7 @@ import {instance} from "./users-api";
 
 export const authApi = {
     me(){
-        return instance.get<{data: isLoginedResponseType}>('/auth/me')
+        return instance.get<{data: isLoginedResponseType, resultCode: number}>('/auth/me')
     }
 }
 
