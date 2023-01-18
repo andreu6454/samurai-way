@@ -70,5 +70,6 @@ export type UsersPageType = {
     users: Array<UserType>,
     pageSize: number,
     totalUsersCount: number,
-    currentPage: number
+    currentPage: number,
+    isDisabled: boolean
 }

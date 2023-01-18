@@ -3,8 +3,7 @@ import style from './UsersPage.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/ReduxState";
 import {UsersPageType} from "../../Redux/Types";
-import {usersApi} from "../../Api/users-api";
-import {setCurrentPageAC, setTotalUsersCountAC, setUsersAC} from "../../Redux/Reducers/usersPageReducer";
+import {setCurrentPageAC, setCurrentPageUsersTc, setUsersTC} from "../../Redux/Reducers/usersPageReducer";
 import Users from "./Users/Users";
 import {Pagination} from "@mui/material";
 
@@ -19,27 +18,11 @@ const UsersPage = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        usersApi.getUsers()
-            .then(
-                (res) => {
-                    dispatch(setUsersAC(res.data.items))
-                    dispatch(setTotalUsersCountAC(res.data.totalCount))
-                })
-            .catch((error) => {
-                console.log(error)
-            })
+        dispatch(setUsersTC())
     }, [])
 
     useEffect(() => {
-        usersApi.getUsers(currentPage, pageSize)
-            .then(
-                res => {
-                    dispatch(setUsersAC(res.data.items))
-                }
-            )
-            .catch((error) => {
-                console.log(error)
-            })
+        dispatch(setCurrentPageUsersTc(currentPage, pageSize))
     }, [currentPage, pageSize])
 
     const pageChangeHandle = (event: React.ChangeEvent<unknown>, page: number) => {

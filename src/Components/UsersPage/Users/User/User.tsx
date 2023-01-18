@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from './User.module.css'
 import {UserType} from "../../../../Redux/Types";
-import {useDispatch} from "react-redux";
-import {followAC, unFollowAC} from "../../../../Redux/Reducers/usersPageReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {followTC} from "../../../../Redux/Reducers/usersPageReducer";
 import {NavLink} from "react-router-dom";
-import {followApi} from "../../../../Api/follow-api";
+import {AppRootStateType} from "../../../../Redux/ReduxState";
 
 type UserPropsType = {
     user: UserType
@@ -12,30 +12,12 @@ type UserPropsType = {
 const User = ({user}: UserPropsType) => {
     const dispatch = useDispatch()
     const altPhoto = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg"
-    const [isDisabled, setIsDisabled] = useState(false)
+    const isDisabled = useSelector<AppRootStateType, boolean>(state => state.UsersPage.isDisabled)
 
     const onClickHandler = () => {
-        setIsDisabled(true)
-        if (user.followed) {
-            followApi.unFollow(user.id).then((res) => {
-                setIsDisabled(false)
-                if (res.data.resultCode === 0) {
-                    dispatch(unFollowAC(user.id))
-                }
-            }).catch(() => {
-                setIsDisabled(false)
-            })
-        } else {
-            followApi.follow(user.id).then((res) => {
-                setIsDisabled(false)
-                if (res.data.resultCode === 0) {
-                    dispatch(followAC(user.id))
-                }
-            }).catch(() => {
-                setIsDisabled(false)
-            })
-        }
+        dispatch(followTC(user.followed, user.id))
     }
+
     return (
         <div className={style.user}>
             <span className={style.leftBlock}>

@@ -1,11 +1,15 @@
 import {UsersPageType, UserType} from "../Types";
+import {Dispatch} from "redux";
+import {usersApi} from "../../Api/users-api";
+import {followApi} from "../../Api/follow-api";
 
 
 const initialState = {
     users: [] as UserType[],
     pageSize: 10,
     totalUsersCount: 20,
-    currentPage: 1
+    currentPage: 1,
+    isDisabled: false
 } as UsersPageType
 
 type usersPageReducerActionType =
@@ -15,6 +19,7 @@ type usersPageReducerActionType =
     | setPageSizeACType
     | setCurrentPageACType
     | setTotalUsersCountACType
+    | setIsDisabledACType
 export const usersPageReducer = (state: UsersPageType = initialState, action: usersPageReducerActionType) => {
     switch (action.type) {
         case "FOLLOW":
@@ -43,11 +48,14 @@ export const usersPageReducer = (state: UsersPageType = initialState, action: us
             return {...state, currentPage: action.currentPage}
         case "SET-PAGE-SIZE":
             return {...state, pageSize: action.pageSize}
+        case "SET-IS-DISABLED":
+            return {...state, isDisabled: action.isDisabled}
         default:
             return state
     }
 }
 
+///////// Reducers
 export const followAC = (userId: number) => {
     return {
         type: "FOLLOW",
@@ -96,3 +104,67 @@ export const setTotalUsersCountAC = (totalUsers: number) => {
 }
 export type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
 
+export const setIsDisabledAC = (isDisabled: boolean) => {
+    return {
+        type: "SET-IS-DISABLED",
+        isDisabled
+    } as const
+}
+export type setIsDisabledACType = ReturnType<typeof setIsDisabledAC>
+
+///////// Thunks
+
+export const setUsersTC = () => {
+    return (dispatch: Dispatch) => {
+        usersApi.getUsers()
+            .then(
+                (res) => {
+                    dispatch(setUsersAC(res.data.items))
+                    dispatch(setTotalUsersCountAC(res.data.totalCount))
+                })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+}
+
+export const setCurrentPageUsersTc = (currentPage: number, pageSize: number) => {
+    return (dispatch: Dispatch) => {
+        usersApi.getUsers(currentPage, pageSize)
+            .then(
+                res => {
+                    dispatch(setUsersAC(res.data.items))
+                }
+            )
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+}
+
+
+export const followTC = (followed: boolean, userId: number) => {
+    return (dispatch: Dispatch) => {
+        if (followed) {
+            dispatch(setIsDisabledAC(true))
+            followApi.unFollow(userId).then((res) => {
+                dispatch(setIsDisabledAC(false))
+                if (res.data.resultCode === 0) {
+                    dispatch(unFollowAC(userId))
+                }
+            }).catch(() => {
+                dispatch(setIsDisabledAC(false))
+            })
+        } else {
+            dispatch(setIsDisabledAC(true))
+            followApi.follow(userId).then((res) => {
+                dispatch(setIsDisabledAC(false))
+                if (res.data.resultCode === 0) {
+                    dispatch(followAC(userId))
+                }
+            }).catch(() => {
+                dispatch(setIsDisabledAC(false))
+            })
+        }
+    }
+}
