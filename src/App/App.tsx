@@ -11,6 +11,7 @@ import SettingsPage from "../Components/SettingsPage/SettingsPage";
 import {StateDataType} from "../Redux/Types";
 import FriendsPage from "../Components/FriendsPage/FriendsPage";
 import UsersPage from "../Components/UsersPage/UsersPage";
+import LoginPage from "../Components/LoginPage/LoginPage";
 
 type AppPropsType = {
     state: StateDataType
@@ -32,6 +33,7 @@ function App(props: AppPropsType) {
                         <Route path={"/settings"}> <SettingsPage/> </Route>
                         <Route path={"/friends"}> <FriendsPage state={props.state.FriendsPage}/> </Route>
                         <Route path={"/users"}> <UsersPage/></Route>
+                        <Route path={"/login"}> <LoginPage/></Route>
                         <Route exact path={"*"}>
                             <div style={{textAlign: "center", marginTop: "50px"}}> 404: page not found</div>
                         </Route>

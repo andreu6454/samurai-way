@@ -6,6 +6,7 @@ import {UsersPageType} from "../../Redux/Types";
 import {setCurrentPageAC, setCurrentPageUsersTc, setUsersTC} from "../../Redux/Reducers/usersPageReducer";
 import Users from "./Users/Users";
 import {Pagination} from "@mui/material";
+import {Redirect} from "react-router-dom";
 
 const UsersPage = () => {
     const {
@@ -13,6 +14,7 @@ const UsersPage = () => {
         currentPage,
         totalUsersCount
     } = useSelector<AppRootStateType, UsersPageType>(state => state.UsersPage)
+    const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
     const totalPagesCount = Math.ceil(totalUsersCount / pageSize)
 
     const dispatch = useDispatch()
@@ -28,7 +30,10 @@ const UsersPage = () => {
     const pageChangeHandle = (event: React.ChangeEvent<unknown>, page: number) => {
         dispatch(setCurrentPageAC(page))
     }
-
+    if (!isAuth) {
+        console.log(isAuth)
+        return <Redirect to={'/login'}/>
+    }
     return (
         <div className={style.userPage}>
             <div className={style.title}>

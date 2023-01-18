@@ -1,7 +1,7 @@
 import {instance} from "./users-api";
 
 export const authApi = {
-    isLogined(){
+    me(){
         return instance.get<{data: isLoginedResponseType}>('/auth/me')
     }
 }
