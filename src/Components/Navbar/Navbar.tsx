@@ -4,9 +4,8 @@ import {NavLink} from "react-router-dom";
 import {NavBarDataType} from "../../Redux/Types";
 import {v1} from "uuid";
 import StyledLink from "../../Items/StyledLink/StyledLink";
-import {authApi} from "../../Api/auth-api";
 import {useDispatch, useSelector} from "react-redux";
-import {setUserDataAC} from "../../Redux/Reducers/authReducer";
+import {setUsersDataTC} from "../../Redux/Reducers/authReducer";
 import {AppRootStateType} from "../../Redux/ReduxState";
 
 type NavBarPropsType = {
@@ -30,9 +29,7 @@ const Navbar = (props: NavBarPropsType) => {
     )
 
     useEffect(() => {
-        authApi.isLogined().then((res) => {
-            dispatch(setUserDataAC(res.data.data))
-        })
+        dispatch(setUsersDataTC())
     }, [])
 
 

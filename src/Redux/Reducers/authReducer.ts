@@ -1,4 +1,5 @@
-import {isLoginedResponseType} from "../../Api/auth-api";
+import {authApi, isLoginedResponseType} from "../../Api/auth-api";
+import {Dispatch} from "redux";
 
 interface initialStateType {
     userId: null | number,
@@ -25,6 +26,8 @@ export const authReducer = (state = initialState, action: authReducerActionType)
     }
 }
 
+//////// Reducers
+
 export const setUserDataAC = (user: isLoginedResponseType) => {
     return {
         type: "SET-USER-DATA",
@@ -34,3 +37,13 @@ export const setUserDataAC = (user: isLoginedResponseType) => {
 
 type setUserDataACType = ReturnType<typeof setUserDataAC>
 type authReducerActionType = setUserDataACType
+
+//////// Thunks
+
+export const setUsersDataTC = () => {
+    return (dispatch: Dispatch) => {
+        authApi.isLogined().then((res) => {
+            dispatch(setUserDataAC(res.data.data))
+        })
+    }
+}
