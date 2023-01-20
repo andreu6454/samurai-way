@@ -1,0 +1,7 @@
+.EditableSpan{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 40%;
+    word-wrap: break-word;
+}
