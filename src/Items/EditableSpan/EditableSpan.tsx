@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 type EditableSpanType = {
     Status: string;
-    callBack: (newTitle: string) => void;
+    callBack: (newStatus: string) => void;
 };
 export const EditableSpan = (props: EditableSpanType) => {
     const {Status, callBack} = props;
@@ -19,7 +19,7 @@ export const EditableSpan = (props: EditableSpanType) => {
         setNewValue(e.currentTarget.value);
     };
     const changeValue = () => {
-        if (newValue !== Status) {
+        if (newValue !== value) {
             setValue(newValue)
             callBack(newValue);
         }
