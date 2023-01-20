@@ -3,6 +3,7 @@ import style from "./ProfileInfo.module.css"
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../Redux/ReduxState";
 import {profileInfoResponseType} from "../../../Api/users-api";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = () => {
     const profileInfo = useSelector<AppRootStateType, profileInfoResponseType>(state => state.ProfilePage.userProfile)
@@ -22,18 +23,7 @@ const ProfileInfo = () => {
                                 {profileInfo.fullName}
                             </div>
                             <div className={style.ProfileDescription}>
-                                <div className={style.DescriptionPoints}>
-                                    <div className={style.Item}> Date of birth:</div>
-                                    <div className={style.Item}> About me:</div>
-                                    <div className={style.Item}> GitHub:</div>
-                                </div>
-                                <div>
-                                    <div className={style.Item}> 09.12.2001</div>
-                                    <div
-                                        className={style.Item}> {profileInfo.aboutMe ? profileInfo.aboutMe : "profile info should be here"}</div>
-                                    <div
-                                        className={style.Item}> {profileInfo.contacts.github ? profileInfo.contacts.github : "gitHub should be here"}</div>
-                                </div>
+                                <ProfileStatus/>
                             </div>
                         </div>
                     </div>

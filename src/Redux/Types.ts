@@ -17,7 +17,8 @@ export type NavBarType = {
 }
 export type ProfilePageDataType = {
     PostsData: Array<PostsDataType>,
-    userProfile: profileInfoResponseType
+    userProfile: profileInfoResponseType,
+    status: string
 }
 export type MessagesPageDataType = {
     DialogsData: Array<DialogsDataType>

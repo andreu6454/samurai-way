@@ -26,8 +26,9 @@ export const InitialState = {
             photos:{
                 small: "",
                 large: ""
-            }
-        }
+            },
+        },
+        status: ""
     },
     MessagesPage: {
         DialogsData: [

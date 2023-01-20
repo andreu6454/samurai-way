@@ -4,10 +4,11 @@ import {InitialState} from "../InitialState";
 import {profileInfoResponseType, usersApi} from "../../Api/users-api";
 import {setIsLoadingAC} from "./appReducer";
 import {Dispatch} from "redux";
+import {profileApi} from "../../Api/profile-api";
 
 const initialState = InitialState.ProfilePage
 
-type ProfilePageReducerType = addPostsACType | setUserProfileACType
+type ProfilePageReducerType = addPostsACType | setUserProfileACType | changeUserStatusACType | setUserStatusACType
 
 export const profilePageReducer = (state: ProfilePageDataType = initialState, action: ProfilePageReducerType) => {
     switch (action.type) {
@@ -21,6 +22,12 @@ export const profilePageReducer = (state: ProfilePageDataType = initialState, ac
         }
         case "SET-USER-PROFILE": {
             return {...state, userProfile: action.user}
+        }
+        case "SET-STATUS": {
+            return {...state, status: action.status}
+        }
+        case "CHANGE-STATUS": {
+            return {...state, status: action.status}
         }
         default:
             return state;
@@ -47,6 +54,22 @@ export const setUserProfileAC = (user: profileInfoResponseType) => {
 }
 type setUserProfileACType = ReturnType<typeof setUserProfileAC>
 
+export const setUserStatusAC = (status: string) => {
+    return {
+        type: "SET-STATUS",
+        status
+    } as const
+}
+type setUserStatusACType = ReturnType<typeof setUserStatusAC>
+
+export const changeUserStatusAC = (status: string) => {
+    return {
+        type: "CHANGE-STATUS",
+        status
+    } as const
+}
+type changeUserStatusACType = ReturnType<typeof changeUserStatusAC>
+
 ///////// Thunks
 
 export const setUserProfileTC = (userId: number) => {
@@ -55,6 +78,30 @@ export const setUserProfileTC = (userId: number) => {
         usersApi.getProfileInfo(userId).then((res) => {
                 dispatch(setIsLoadingAC(false))
                 dispatch(setUserProfileAC(res.data))
+            }
+        )
+    }
+}
+
+export const setUserStatusTC = (userId: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setIsLoadingAC(true))
+        profileApi.getStatus(userId).then((res) => {
+                dispatch(setIsLoadingAC(false))
+                dispatch(setUserStatusAC(res.data))
+            }
+        )
+    }
+}
+
+export const changeUserStatusTC = (status: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setIsLoadingAC(true))
+        profileApi.changeStatus(status).then((res) => {
+                dispatch(setIsLoadingAC(false))
+                if (res.data.resultCode === 0) {
+                    dispatch(changeUserStatusAC(status))
+                }
             }
         )
     }
