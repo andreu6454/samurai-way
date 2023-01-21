@@ -28,7 +28,8 @@ export const InitialState = {
                 large: ""
             },
         },
-        status: ""
+        status: "",
+        isLoading: false
     },
     MessagesPage: {
         DialogsData: [
