@@ -1,5 +1,5 @@
 import {Edit} from '@mui/icons-material';
-import React, {ChangeEvent, useState} from 'react';
+import {ChangeEvent, useState} from 'react';
 import style from './EditableSpan.module.css'
 import {Box, Popover, TextField, Typography} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
@@ -13,7 +13,7 @@ export const EditableSpan = (props: EditableSpanType) => {
     const {Status, callBack} = props;
     const [value, setValue] = useState(Status)
     const [newValue, setNewValue] = useState(Status);
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewValue(e.currentTarget.value);

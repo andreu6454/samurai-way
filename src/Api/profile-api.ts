@@ -1,4 +1,4 @@
-import {instance} from "./users-api";
+import {instance, profileInfoResponseType} from "./users-api";
 
 export const profileApi = {
     changeStatus(status: string) {
@@ -6,6 +6,9 @@ export const profileApi = {
     },
     getStatus(userId: number){
         return instance.get(`/profile/status/${userId}`)
+    },
+    getProfileInfo(userId: number) {
+        return instance.get<profileInfoResponseType>(`/profile/${userId}`)
     }
 }
 

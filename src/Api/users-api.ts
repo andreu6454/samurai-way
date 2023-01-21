@@ -10,9 +10,7 @@ export const usersApi = {
     getUsers(currentPage?: number, pageSize?: number) {
         return instance.get<userResponseType>(`/users?page=${currentPage}&count=${pageSize}`)
     },
-    getProfileInfo(userId: number) {
-        return instance.get<profileInfoResponseType>(`/profile/${userId}`)
-    }
+
 }
 
 

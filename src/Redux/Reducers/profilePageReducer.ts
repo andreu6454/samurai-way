@@ -1,7 +1,7 @@
 import {PostsDataType, ProfilePageDataType} from "../Types";
 import {v1} from "uuid";
 import {InitialState} from "../InitialState";
-import {profileInfoResponseType, usersApi} from "../../Api/users-api";
+import {profileInfoResponseType} from "../../Api/users-api";
 import {setIsLoadingAC} from "./appReducer";
 import {Dispatch} from "redux";
 import {profileApi} from "../../Api/profile-api";
@@ -75,7 +75,7 @@ type changeUserStatusACType = ReturnType<typeof changeUserStatusAC>
 export const setUserProfileTC = (userId: number) => {
     return (dispatch: Dispatch) => {
         dispatch(setIsLoadingAC(true))
-        usersApi.getProfileInfo(userId).then((res) => {
+        profileApi.getProfileInfo(userId).then((res) => {
                 dispatch(setIsLoadingAC(false))
                 dispatch(setUserProfileAC(res.data))
             }
@@ -85,9 +85,7 @@ export const setUserProfileTC = (userId: number) => {
 
 export const setUserStatusTC = (userId: number) => {
     return (dispatch: Dispatch) => {
-        dispatch(setIsLoadingAC(true))
         profileApi.getStatus(userId).then((res) => {
-                dispatch(setIsLoadingAC(false))
                 dispatch(setUserStatusAC(res.data))
             }
         )
@@ -96,9 +94,7 @@ export const setUserStatusTC = (userId: number) => {
 
 export const changeUserStatusTC = (status: string) => {
     return (dispatch: Dispatch) => {
-        dispatch(setIsLoadingAC(true))
         profileApi.changeStatus(status).then((res) => {
-                dispatch(setIsLoadingAC(false))
                 if (res.data.resultCode === 0) {
                     dispatch(changeUserStatusAC(status))
                 }
