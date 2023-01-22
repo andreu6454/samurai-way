@@ -17,14 +17,17 @@ const initialState: initialStateType = {
     isLoading: false,
     isAuth: false
 }
-type authReducerActionType = setUserDataACType | setIsAuthACType
+type authReducerActionType = setUserDataACType | logInACType | logOutACType
 export const authReducer = (state = initialState, action: authReducerActionType) => {
     switch (action.type) {
         case "SET-USER-DATA": {
             return {...state, login: action.user.login, email: action.user.email, userId: action.user.id, isAuth: true}
         }
-        case "SET-AUTH": {
+        case "LOGIN": {
             return {...state, userId: action.userId, isAuth: true}
+        }
+        case "LOGOUT": {
+            return {...state, isAuth: false, userId: null}
         }
         default:
             return state
@@ -42,14 +45,22 @@ export const setUserDataAC = (user: isAuthResponseType) => {
 
 type setUserDataACType = ReturnType<typeof setUserDataAC>
 
-export const setIsAuthAC = (userId: number) => {
+export const logInAC = (userId: number) => {
     return {
-        type: "SET-AUTH",
+        type: "LOGIN",
         userId
     } as const
 }
 
-type setIsAuthACType = ReturnType<typeof setIsAuthAC>
+type logInACType = ReturnType<typeof logInAC>
+
+export const logOutAC = () => {
+    return {
+        type: "LOGOUT",
+    } as const
+}
+
+type logOutACType = ReturnType<typeof logOutAC>
 
 //////// Thunks
 
@@ -63,12 +74,21 @@ export const setUsersDataTC = () => {
     }
 }
 
-export const setIsAuthTC = ({email, password, rememberMe}: LoginDataType) => {
-    console.log(email,password,rememberMe)
+export const logInTC = ({email, password, rememberMe}: LoginDataType) => {
     return (dispatch: Dispatch) => {
         authApi.login({email, password, rememberMe}).then((res) => {
             if(res.data.resultCode === 0){
-                dispatch(setIsAuthAC(res.data.data.userId))
+                dispatch(logInAC(res.data.data.userId))
+            }
+        })
+    }
+}
+
+export const logOutTC = () => {
+    return (dispatch: Dispatch) => {
+        authApi.logOut().then((res) => {
+            if(res.data.resultCode === 0){
+                dispatch(logOutAC())
             }
         })
     }
