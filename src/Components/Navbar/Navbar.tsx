@@ -1,21 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import style from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {NavBarDataType} from "../../Redux/Types";
 import {v1} from "uuid";
 import StyledLink from "../../Items/StyledLink/StyledLink";
-import {useDispatch, useSelector} from "react-redux";
-import {setUsersDataTC} from "../../Redux/Reducers/authReducer";
-import {AppRootStateType} from "../../Redux/ReduxState";
 
 type NavBarPropsType = {
-    state: NavBarDataType
+    state: NavBarDataType,
+    userId: number
 }
 
 const Navbar = (props: NavBarPropsType) => {
-    const dispatch = useDispatch()
 
-    let userId = useSelector<AppRootStateType>(state => state.auth.userId)
 
     const friends = props.state.NavBarData.map(friend =>
         <div key={v1()}>
@@ -28,15 +24,13 @@ const Navbar = (props: NavBarPropsType) => {
         </div>
     )
 
-    useEffect(() => {
-        dispatch(setUsersDataTC())
-    }, [])
+
 
 
     return (
         <nav className={style.appNav}>
 
-            <StyledLink redirectTo={"/profile/" + userId} title={"Profile"}/>
+            <StyledLink redirectTo={"/profile/" + props.userId} title={"Profile"}/>
 
             <StyledLink redirectTo={"/dialogs"} title={"Messages"}/>
 

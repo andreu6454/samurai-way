@@ -1,12 +1,12 @@
 import {authApi, isAuthResponseType} from "../../Api/auth-api";
 import {Dispatch} from "redux";
 import {LoginDataType} from "../../Components/LoginPage/LoginPage";
+import {setIsInitializedAC} from "./appReducer";
 
 interface initialStateType {
     userId: null | number,
     email: null | string,
     login: null | string,
-    isLoading: boolean,
     isAuth: boolean
 }
 
@@ -14,14 +14,19 @@ const initialState: initialStateType = {
     userId: 2,
     email: null,
     login: null,
-    isLoading: false,
     isAuth: false
 }
 type authReducerActionType = setUserDataACType | logInACType | logOutACType
 export const authReducer = (state = initialState, action: authReducerActionType) => {
     switch (action.type) {
         case "SET-USER-DATA": {
-            return {...state, login: action.user.login, email: action.user.email, userId: action.user.id, isAuth: true}
+            return {
+                ...state,
+                login: action.user.login,
+                email: action.user.email,
+                userId: action.user.id,
+                isAuth: true,
+            }
         }
         case "LOGIN": {
             return {...state, userId: action.userId, isAuth: true}
@@ -66,8 +71,10 @@ type logOutACType = ReturnType<typeof logOutAC>
 
 export const setUsersDataTC = () => {
     return (dispatch: Dispatch) => {
+        dispatch(setIsInitializedAC(true))
         authApi.me().then((res) => {
-            if(res.data.resultCode === 0){
+            dispatch(setIsInitializedAC(false))
+            if (res.data.resultCode === 0) {
                 dispatch(setUserDataAC(res.data.data))
             }
         })
@@ -77,7 +84,7 @@ export const setUsersDataTC = () => {
 export const logInTC = ({email, password, rememberMe}: LoginDataType) => {
     return (dispatch: Dispatch) => {
         authApi.login({email, password, rememberMe}).then((res) => {
-            if(res.data.resultCode === 0){
+            if (res.data.resultCode === 0) {
                 dispatch(logInAC(res.data.data.userId))
             }
         })
@@ -87,7 +94,7 @@ export const logInTC = ({email, password, rememberMe}: LoginDataType) => {
 export const logOutTC = () => {
     return (dispatch: Dispatch) => {
         authApi.logOut().then((res) => {
-            if(res.data.resultCode === 0){
+            if (res.data.resultCode === 0) {
                 dispatch(logOutAC())
             }
         })
