@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Visibility, VisibilityOff} from '@mui/icons-material';
-import {setIsAuthTC} from "../../Redux/Reducers/authReducer";
+import {logInTC} from "../../Redux/Reducers/authReducer";
 import {AppRootStateType} from "../../Redux/ReduxState";
 import {Redirect} from "react-router-dom";
 
@@ -57,7 +57,7 @@ const LoginPage = () => {
         event.preventDefault();
     };
     const onSubmit: SubmitHandler<LoginDataType> = ({email, password, rememberMe}: LoginDataType) => {
-        dispatch(setIsAuthTC({email, password, rememberMe}))
+        dispatch(logInTC({email, password, rememberMe}))
     };
 
     if (isAuth) {
