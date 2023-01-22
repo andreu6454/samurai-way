@@ -24,7 +24,7 @@ type AppPropsType = {
 function App(props: AppPropsType) {
     const dispatch = useDispatch()
 
-    const userId = useSelector<AppRootStateType>(state => state.auth.userId)
+    const userId = useSelector<AppRootStateType>(state => state.auth.authorizedUserId)
     const isInitialized = useSelector<AppRootStateType>(state => state.app.isInitialized)
 
 

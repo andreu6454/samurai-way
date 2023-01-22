@@ -30,7 +30,7 @@ export interface LoginDataType {
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
-    const userID = useSelector<AppRootStateType>(state => state.auth.userId)
+    const userID = useSelector<AppRootStateType>(state => state.auth.authorizedUserId)
 
     const dispatch = useDispatch();
 

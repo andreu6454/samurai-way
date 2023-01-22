@@ -4,14 +4,14 @@ import {LoginDataType} from "../../Components/LoginPage/LoginPage";
 import {setIsInitializedAC} from "./appReducer";
 
 interface initialStateType {
-    userId: null | number,
+    authorizedUserId: null | number,
     email: null | string,
     login: null | string,
     isAuth: boolean
 }
 
 const initialState: initialStateType = {
-    userId: 2,
+    authorizedUserId: 2,
     email: null,
     login: null,
     isAuth: false
@@ -24,15 +24,15 @@ export const authReducer = (state = initialState, action: authReducerActionType)
                 ...state,
                 login: action.user.login,
                 email: action.user.email,
-                userId: action.user.id,
+                authorizedUserId: action.user.id,
                 isAuth: true,
             }
         }
         case "LOGIN": {
-            return {...state, userId: action.userId, isAuth: true}
+            return {...state, authorizedUserId: action.userId, isAuth: true}
         }
         case "LOGOUT": {
-            return {...state, isAuth: false, userId: null}
+            return {...state, isAuth: false, authorizedUserId: null}
         }
         default:
             return state
