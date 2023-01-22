@@ -7,6 +7,9 @@ export const authApi = {
     },
     login({email, password, rememberMe}: LoginDataType) {
         return instance.post<isLoginedResponseType>('/auth/login', {email, password, rememberMe})
+    },
+    logOut(){
+        return instance.delete<logOutResponseType>('/auth/login')
     }
 }
 
@@ -23,4 +26,10 @@ export type isLoginedResponseType = {
         userId: number
     }
 
+}
+
+export type logOutResponseType = {
+    resultCode: number
+    messages: string[],
+    data: {}
 }
