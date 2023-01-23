@@ -6,12 +6,13 @@ import NavBar from "./NavBar/NavBar";
 
 export const Layout = () => {
     const isInitialized = useAppSelector((state) => state.app.isInitialized);
+    const isAuth = useAppSelector(state => state.auth.isAuth)
 
     if (!isInitialized) {
         return (
             <>
                 <Header />
-                <NavBar />
+                {isAuth && <NavBar />}
                 <LinearProgress />
             </>
         );
@@ -20,7 +21,7 @@ export const Layout = () => {
     return (
         <>
             <Header />
-            <NavBar />
+            {isAuth && <NavBar />}
             <Outlet />
         </>
     );
