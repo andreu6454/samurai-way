@@ -1,7 +1,8 @@
 import {LinearProgress} from '@mui/material';
 import {Outlet} from 'react-router-dom';
 import {useAppSelector} from "../../Redux/ReduxState";
-import Navbar from "../../Pages/Navbar/Navbar";
+import Header from "./Header/Header";
+import NavBar from "./NavBar/NavBar";
 
 export const Layout = () => {
     const isInitialized = useAppSelector((state) => state.app.isInitialized);
@@ -9,7 +10,8 @@ export const Layout = () => {
     if (!isInitialized) {
         return (
             <>
-                <Navbar />
+                <Header />
+                <NavBar />
                 <LinearProgress />
             </>
         );
@@ -17,7 +19,8 @@ export const Layout = () => {
 
     return (
         <>
-            <Navbar />
+            <Header />
+            <NavBar />
             <Outlet />
         </>
     );
