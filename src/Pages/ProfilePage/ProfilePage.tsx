@@ -8,15 +8,12 @@ import {addPostsAC, setUserProfileTC} from "../../Redux/Reducers/profilePageRedu
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "../../Redux/ReduxState";
 import PreLoader from "../../Components/PreLoader/PreLoader";
-import {Redirect, useParams, withRouter} from "react-router-dom";
 
 
-const ProfilePage = withRouter(() => {
+const ProfilePage = () => {
     const posts = useAppSelector<Array<PostsDataType>>(state => state.ProfilePage.PostsData)
     const isLoading = useAppSelector(state => state.app.isLoading)
-    const isAuth = useAppSelector(state => state.auth.isAuth)
-    const {userId} = useParams<{ userId: string }>()
-
+    const userId = 25817
     const dispatch = useDispatch()
     const addPost = (post: string) => {
         dispatch(addPostsAC(post))
@@ -26,9 +23,6 @@ const ProfilePage = withRouter(() => {
         dispatch(setUserProfileTC(Number(userId)))
     }, [userId])
 
-    if (!isAuth) {
-        return <Redirect to={"/login"}/>
-    }
     return (
         <div>
             {isLoading ? <PreLoader/> :
@@ -47,6 +41,6 @@ const ProfilePage = withRouter(() => {
             }
         </div>
     );
-});
+};
 
 export default ProfilePage;

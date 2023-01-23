@@ -1,57 +1,47 @@
 import React from 'react';
 import style from "./Navbar.module.css";
-import {NavLink} from "react-router-dom";
-import {NavBarDataType} from "../../Redux/Types";
-import {v1} from "uuid";
 import StyledLink from "../../Components/StyledLink/StyledLink";
-
-type NavBarPropsType = {
-    state: NavBarDataType,
-    userId: number
-}
-
-const Navbar = (props: NavBarPropsType) => {
+import {logOutTC} from "../../Redux/Reducers/authReducer";
+import {useDispatch} from "react-redux";
+import {Button} from "@mui/material";
+import {useAppSelector} from "../../Redux/ReduxState";
 
 
-    const friends = props.state.NavBarData.map(friend =>
-        <div key={v1()}>
-            <img
-                src={friend.avatar}
-                className={style.friendsImg}
-                id={friend.id}
-                alt={"avatar"}
-            />
-        </div>
-    )
-
-
-
+const Navbar = () => {
+    const dispatch = useDispatch()
+    const isAuth = useAppSelector(state => state.auth.isAuth)
+    const logOutHandle = () => {
+        dispatch(logOutTC())
+    }
 
     return (
         <nav className={style.appNav}>
+            <div className={style.links}>
+                <StyledLink redirectTo={"/profile"} title={"Profile"}/>
 
-            <StyledLink redirectTo={"/profile/" + props.userId} title={"Profile"}/>
+                <StyledLink redirectTo={"/dialogs"} title={"Messages"}/>
 
-            <StyledLink redirectTo={"/dialogs"} title={"Messages"}/>
+                <StyledLink redirectTo={"/news"} title={"News"}/>
 
-            <StyledLink redirectTo={"/news"} title={"News"}/>
+                <StyledLink redirectTo={"/music"} title={"Music"}/>
 
-            <StyledLink redirectTo={"/music"} title={"Music"}/>
+                <StyledLink redirectTo={"/users"} title={"Users"}/>
 
-            <StyledLink redirectTo={"/users"} title={"Users"}/>
+                <StyledLink redirectTo={"/settings"} title={"Settings"}/>
 
-            <StyledLink redirectTo={"/settings"} title={"Settings"}/>
-
-            <div className={style.friendsBlock}>
-                <div className={style.item}>
-                    <NavLink to="/friends" activeClassName={style.active}>Friends</NavLink>
-                </div>
-
-                <div className={style.friends}>
-                    {friends}
-                </div>
+                <StyledLink redirectTo="/friends" title={"Friends"} />
             </div>
 
+
+            {isAuth &&
+                < Button
+                    sx={{mr: 2,mt: 0,mb: 0, borderRadius: "15px", bgcolor: "#0d1117"}}
+                    variant="contained"
+                    onClick={logOutHandle}
+                >
+                    Log out
+                </Button>
+            }
         </nav>
     );
 };

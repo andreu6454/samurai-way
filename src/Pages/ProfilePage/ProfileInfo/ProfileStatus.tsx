@@ -9,7 +9,9 @@ const ProfileStatus = () => {
     const status = useAppSelector(state => state.ProfilePage.status)
     const authorizedUserId = useAppSelector(state => state.auth.authorizedUserId)
     const {userId} = useParams<{ userId: string }>()
+
     let canBeChanged
+
     Number(authorizedUserId) === Number(userId) ? canBeChanged = true : canBeChanged = false
 
     const dispatch = useDispatch()

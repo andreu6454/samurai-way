@@ -20,7 +20,8 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import {logInTC} from "../../Redux/Reducers/authReducer";
 import {useAppSelector} from "../../Redux/ReduxState";
-import {Redirect} from "react-router-dom";
+import {Navigate} from "react-router-dom";
+import {appRoutes} from "../../Routes/constants";
 
 export interface LoginDataType {
     email: string,
@@ -31,10 +32,8 @@ export interface LoginDataType {
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const isAuth = useAppSelector(state => state.auth.isAuth)
-    const userID = useAppSelector(state => state.auth.authorizedUserId)
 
     const dispatch = useDispatch();
-
 
     const {
         register,
@@ -62,7 +61,7 @@ const LoginPage = () => {
     };
 
     if (isAuth) {
-        return <Redirect to={`/profile/${userID}`}/>
+        return <Navigate to={appRoutes.PROFILE}/>
     }
     return (
         <Box>

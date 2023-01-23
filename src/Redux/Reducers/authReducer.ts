@@ -69,11 +69,11 @@ type logOutACType = ReturnType<typeof logOutAC>
 
 //////// Thunks
 
-export const setUsersDataTC = () => {
+export const isAuthUser = () => {
     return (dispatch: Dispatch) => {
-        dispatch(setIsInitializedAC(true))
+        dispatch(setIsInitializedAC(false))
         authApi.me().then((res) => {
-            dispatch(setIsInitializedAC(false))
+            dispatch(setIsInitializedAC(true))
             if (res.data.resultCode === 0) {
                 dispatch(setUserDataAC(res.data.data))
             }

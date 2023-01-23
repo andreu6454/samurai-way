@@ -9,7 +9,7 @@ type StyledLinkPropsType = {
 const StyledLink: FC<StyledLinkPropsType> = ({redirectTo,title}) => {
     return (
         <div className={style.item}>
-            <NavLink to={redirectTo} activeClassName={style.active}>{title}</NavLink>
+            <NavLink to={redirectTo}>{title}</NavLink>
         </div>
     );
 };

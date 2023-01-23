@@ -17,7 +17,7 @@ const DialogsItem = (props: DialogsPropsType) => {
             <hr></hr>
             <div className={style.dialog}>
                 <img className={style.avatar} src={props.avatar} alt={"avatar"}></img>
-                <NavLink to={path} activeClassName={style.active}> {props.name} </NavLink>
+                <NavLink to={path} > {props.name} </NavLink>
             </div>
             <hr></hr>
         </div>
