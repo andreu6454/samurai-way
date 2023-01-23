@@ -4,7 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
 import {PostsDataType} from "../../Redux/Types";
-import {addPostsAC, setUserProfileTC, setUserStatusTC} from "../../Redux/Reducers/profilePageReducer";
+import {addPostsAC, setUserProfileTC} from "../../Redux/Reducers/profilePageReducer";
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "../../Redux/ReduxState";
 import PreLoader from "../../Items/PreLoader/PreLoader";
@@ -24,7 +24,6 @@ const ProfilePage = withRouter(() => {
 
     useEffect(() => {
         dispatch(setUserProfileTC(Number(userId)))
-        dispatch(setUserStatusTC(Number(userId)))
     }, [userId])
 
     if (!isAuth) {

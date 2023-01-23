@@ -40,14 +40,14 @@ export const EditableSpan = (props: EditableSpanType) => {
     return (
         <div className={style.EditableSpan}>
             <Typography onDoubleClick={handleClick} ml={2}>
-                {value}
+                {value !== "null" && value}
             </Typography>
-            <Edit
+            {value !== "null" && <Edit
                 aria-describedby={id}
                 sx={{ml: 1}}
                 fontSize={'small'}
                 onClick={handleClick}
-            />
+            />}
             <Popover
                 id={id}
                 open={open}

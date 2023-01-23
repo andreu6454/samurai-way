@@ -75,22 +75,28 @@ type changeUserStatusACType = ReturnType<typeof changeUserStatusAC>
 export const setUserProfileTC = (userId: number) => {
     return (dispatch: Dispatch) => {
         dispatch(setIsLoadingAC(true))
-        profileApi.getProfileInfo(userId).then((res) => {
-                dispatch(setIsLoadingAC(false))
+         const profileInfo = profileApi.getProfileInfo(userId).then((res) => {
                 dispatch(setUserProfileAC(res.data))
             }
         )
-    }
-}
-
-export const setUserStatusTC = (userId: number) => {
-    return (dispatch: Dispatch) => {
-        profileApi.getStatus(userId).then((res) => {
+        const profileStatus = profileApi.getStatus(userId).then((res) => {
                 dispatch(setUserStatusAC(res.data))
             }
         )
+        Promise.all([profileStatus,profileInfo]).then(()=>{
+            dispatch(setIsLoadingAC(false))
+        })
     }
 }
+
+// export const setUserStatusTC = (userId: number) => {
+//     return (dispatch: Dispatch) => {
+//         profileApi.getStatus(userId).then((res) => {
+//                 dispatch(setUserStatusAC(res.data))
+//             }
+//         )
+//     }
+// }
 
 export const changeUserStatusTC = (status: string) => {
     return (dispatch: Dispatch) => {
