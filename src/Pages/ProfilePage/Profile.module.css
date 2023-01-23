@@ -1,15 +1,15 @@
 .appContent{
-    max-width: 800px;
+    width: 100%;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
 }
-.appImg{
-    margin: auto;
-    height: 200px;
-    width: 1000px;
-}
-.appImg img{
-
-    border-radius: 5px 5px 0 0;
-    height: 200px;
-    width: 1000px;
+.stickyClass{
+    position: sticky;
+    top: 20px;
+    content: "";
+    width: 100vw;
+    height: 40px;
+    z-index: 1;
+    border-bottom: #30363d 1px solid;
 }

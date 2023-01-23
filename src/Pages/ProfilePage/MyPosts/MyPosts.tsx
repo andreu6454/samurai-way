@@ -21,6 +21,8 @@ const MyPosts = (props: MyPostsPropsType) => {
         <div className={style.postsBlock}>
             My posts:
             {PostsElement}
+            {PostsElement}
+            {PostsElement}
         </div>
     );
 };

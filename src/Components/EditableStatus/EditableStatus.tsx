@@ -8,7 +8,6 @@ import AddIcon from '@mui/icons-material/Add';
 type EditableSpanType = {
     Status: string;
     callBack: (newStatus: string) => void;
-    canBeChanged: boolean;
 };
 export const EditableStatus = (props: EditableSpanType) => {
     const {Status, callBack} = props;
@@ -27,9 +26,7 @@ export const EditableStatus = (props: EditableSpanType) => {
     };
 
     const handleClick = (event: any) => {
-        if(props.canBeChanged){
-            setAnchorEl(event.currentTarget);
-        }
+        setAnchorEl(event.currentTarget);
     };
 
     const handleClose = () => {
@@ -38,14 +35,15 @@ export const EditableStatus = (props: EditableSpanType) => {
     };
 
     const open = Boolean(anchorEl);
+
     const id = open ? 'simple-popover' : undefined;
 
     return (
         <div className={style.EditableSpan}>
-            <Typography onDoubleClick={handleClick} ml={2}>
+            <Typography fontSize={"20px"} onDoubleClick={handleClick} ml={2}>
                 {value !== "null" && value}
             </Typography>
-            {value !== "null" && props.canBeChanged &&<Edit
+            {value !== "null" && <Edit
                 aria-describedby={id}
                 sx={{ml: 1}}
                 fontSize={'small'}
