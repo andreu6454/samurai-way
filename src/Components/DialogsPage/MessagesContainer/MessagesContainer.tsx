@@ -1,12 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from "../Dialogs.module.css";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../../Redux/ReduxState";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../../Redux/ReduxState";
 import {addMessageAC} from "../../../Redux/Reducers/messagePageReducer";
 import Messages from "./Messages/Messages";
 
 const MessagesContainer = () => {
-    const messageDataLength = useSelector<AppRootStateType,number>(state => state.MessagesPage.MessageData.length)
+    const messageDataLength = useAppSelector<number>(state => state.MessagesPage.MessageData.length)
     const dispatch = useDispatch()
     const [message, setMessage] = useState<string>("")
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {

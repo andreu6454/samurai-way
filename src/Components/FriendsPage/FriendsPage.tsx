@@ -4,14 +4,13 @@ import FriendBlock from "./FriendBlock/FriendBlock";
 import {FriendsPageDataType} from "../../Redux/Types";
 import FriendsRequestsBlock from "./FriendsRequestsBlock/FriendsRequestsBlock";
 import {Redirect} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../Redux/ReduxState";
+import {useAppSelector} from "../../Redux/ReduxState";
 
 type FriendsPropsType = {
     state: FriendsPageDataType
 }
 const FriendsPage = (props: FriendsPropsType) => {
-    const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
 
     const friends = props.state.FriendsData.map(friend =>
         <FriendBlock state={friend}/>

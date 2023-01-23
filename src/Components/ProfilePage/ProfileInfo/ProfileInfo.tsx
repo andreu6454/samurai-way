@@ -1,12 +1,11 @@
 import React from 'react';
 import style from "./ProfileInfo.module.css"
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../../Redux/ReduxState";
+import {useAppSelector} from "../../../Redux/ReduxState";
 import {profileInfoResponseType} from "../../../Api/users-api";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = () => {
-    const profileInfo = useSelector<AppRootStateType, profileInfoResponseType>(state => state.ProfilePage.userProfile)
+    const profileInfo = useAppSelector<profileInfoResponseType>(state => state.ProfilePage.userProfile)
 
     return (
         <div className={style.ProfileBlock}>

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {
     Box,
     Button,
@@ -7,7 +7,8 @@ import {
     CardActions,
     CardContent,
     Checkbox,
-    FormControl, FormControlLabel,
+    FormControl,
+    FormControlLabel,
     IconButton,
     Input,
     InputAdornment,
@@ -18,7 +19,7 @@ import {
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import {logInTC} from "../../Redux/Reducers/authReducer";
-import {AppRootStateType} from "../../Redux/ReduxState";
+import {useAppSelector} from "../../Redux/ReduxState";
 import {Redirect} from "react-router-dom";
 
 export interface LoginDataType {
@@ -29,8 +30,8 @@ export interface LoginDataType {
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
-    const userID = useSelector<AppRootStateType>(state => state.auth.authorizedUserId)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
+    const userID = useAppSelector(state => state.auth.authorizedUserId)
 
     const dispatch = useDispatch();
 

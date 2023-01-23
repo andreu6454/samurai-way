@@ -1,13 +1,13 @@
 import React from 'react';
 import style from "./Header.module.css";
 import {Button} from "@mui/material";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {logOutTC} from "../../Redux/Reducers/authReducer";
-import {AppRootStateType} from "../../Redux/ReduxState";
+import {useAppSelector} from "../../Redux/ReduxState";
 
 const Header = () => {
     const dispatch = useDispatch()
-    const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
 
     const logOutHandle = () => {
         dispatch(logOutTC())

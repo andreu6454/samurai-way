@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './User.module.css'
 import {UserType} from "../../../../Redux/Types";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {followTC} from "../../../../Redux/Reducers/usersPageReducer";
 import {NavLink} from "react-router-dom";
-import {AppRootStateType} from "../../../../Redux/ReduxState";
+import {useAppSelector} from "../../../../Redux/ReduxState";
 
 type UserPropsType = {
     user: UserType
@@ -12,7 +12,7 @@ type UserPropsType = {
 const User = ({user}: UserPropsType) => {
     const dispatch = useDispatch()
     const altPhoto = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg"
-    const isDisabled = useSelector<AppRootStateType, boolean>(state => state.UsersPage.isDisabled)
+    const isDisabled = useAppSelector(state => state.UsersPage.isDisabled)
 
     const onClickHandler = () => {
         dispatch(followTC(user.followed, user.id))

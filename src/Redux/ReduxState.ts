@@ -7,6 +7,7 @@ import {usersPageReducer} from "./Reducers/usersPageReducer";
 import {appReducer} from "./Reducers/appReducer";
 import {authReducer} from "./Reducers/authReducer";
 import thunk from "redux-thunk";
+import {TypedUseSelectorHook, useSelector} from "react-redux";
 
 export let reducers = combineReducers({
     ProfilePage: profilePageReducer,
@@ -20,3 +21,5 @@ export let reducers = combineReducers({
 export type AppRootStateType = ReturnType<typeof reducers>
 
 export const store = createStore(reducers,applyMiddleware(thunk));
+
+export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector;

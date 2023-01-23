@@ -1,11 +1,11 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../../Redux/ReduxState";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../../Redux/ReduxState";
 import {changeUserStatusTC} from "../../../Redux/Reducers/profilePageReducer";
 import {EditableSpan} from "../../../Items/EditableSpan/EditableSpan";
 
 const ProfileStatus = () => {
-    const status = useSelector<AppRootStateType>(state => state.ProfilePage.status)
+    const status = useAppSelector(state => state.ProfilePage.status)
     const dispatch = useDispatch()
 
     const changeStatus = (newStatus: string) => {

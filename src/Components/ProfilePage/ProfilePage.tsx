@@ -5,17 +5,17 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPost from "./NewPost/NewPost";
 import {PostsDataType} from "../../Redux/Types";
 import {addPostsAC, setUserProfileTC, setUserStatusTC} from "../../Redux/Reducers/profilePageReducer";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../Redux/ReduxState";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../Redux/ReduxState";
 import PreLoader from "../../Items/PreLoader/PreLoader";
 import {Redirect, useParams, withRouter} from "react-router-dom";
 
 
 const ProfilePage = withRouter(() => {
-    const posts = useSelector<AppRootStateType, Array<PostsDataType>>(state => state.ProfilePage.PostsData)
-    const isLoading = useSelector<AppRootStateType>(state => state.app.isLoading)
+    const posts = useAppSelector<Array<PostsDataType>>(state => state.ProfilePage.PostsData)
+    const isLoading = useAppSelector(state => state.app.isLoading)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
     const {userId} = useParams<{ userId: string }>()
-    const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
 
     const dispatch = useDispatch()
     const addPost = (post: string) => {
@@ -27,7 +27,7 @@ const ProfilePage = withRouter(() => {
         dispatch(setUserStatusTC(Number(userId)))
     }, [userId])
 
-    if(!isAuth){
+    if (!isAuth) {
         return <Redirect to={"/login"}/>
     }
     return (

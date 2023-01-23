@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import style from './UsersPage.module.css'
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../Redux/ReduxState";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../Redux/ReduxState";
 import {UsersPageType} from "../../Redux/Types";
 import {setCurrentPageAC, setCurrentPageUsersTc, setUsersTC} from "../../Redux/Reducers/usersPageReducer";
 import Users from "./Users/Users";
@@ -13,8 +13,8 @@ const UsersPage = () => {
         pageSize,
         currentPage,
         totalUsersCount
-    } = useSelector<AppRootStateType, UsersPageType>(state => state.UsersPage)
-    const isAuth = useSelector<AppRootStateType>(state => state.auth.isAuth)
+    } = useAppSelector<UsersPageType>(state => state.UsersPage)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
     const totalPagesCount = Math.ceil(totalUsersCount / pageSize)
 
     const dispatch = useDispatch()
@@ -31,7 +31,6 @@ const UsersPage = () => {
         dispatch(setCurrentPageAC(page))
     }
     if (!isAuth) {
-        console.log(isAuth)
         return <Redirect to={'/login'}/>
     }
     return (
