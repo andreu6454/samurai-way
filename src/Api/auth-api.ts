@@ -1,5 +1,5 @@
 import {instance} from "./users-api";
-import {LoginDataType} from "../Components/LoginPage/LoginPage";
+import {LoginDataType} from "../Pages/LoginPage/LoginPage";
 
 export const authApi = {
     me() {

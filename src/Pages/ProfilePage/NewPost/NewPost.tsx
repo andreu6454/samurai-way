@@ -1,6 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import style from "./NewPosts.module.css"
-import Button from "../../../Items/Buttons/Button";
+import Button from "../../../Components/Buttons/Button";
 
 type NewPostPropsType = {
     addPost: (postData: string) => void

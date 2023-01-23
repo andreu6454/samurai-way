@@ -7,7 +7,7 @@ import {PostsDataType} from "../../Redux/Types";
 import {addPostsAC, setUserProfileTC} from "../../Redux/Reducers/profilePageReducer";
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "../../Redux/ReduxState";
-import PreLoader from "../../Items/PreLoader/PreLoader";
+import PreLoader from "../../Components/PreLoader/PreLoader";
 import {Redirect, useParams, withRouter} from "react-router-dom";
 
 

@@ -3,7 +3,7 @@ import style from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {NavBarDataType} from "../../Redux/Types";
 import {v1} from "uuid";
-import StyledLink from "../../Items/StyledLink/StyledLink";
+import StyledLink from "../../Components/StyledLink/StyledLink";
 
 type NavBarPropsType = {
     state: NavBarDataType,
@@ -38,9 +38,9 @@ const Navbar = (props: NavBarPropsType) => {
 
             <StyledLink redirectTo={"/music"} title={"Music"}/>
 
-            <StyledLink redirectTo={"/settings"} title={"Settings"}/>
-
             <StyledLink redirectTo={"/users"} title={"Users"}/>
+
+            <StyledLink redirectTo={"/settings"} title={"Settings"}/>
 
             <div className={style.friendsBlock}>
                 <div className={style.item}>

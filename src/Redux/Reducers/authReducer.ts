@@ -1,6 +1,6 @@
 import {authApi, isAuthResponseType} from "../../Api/auth-api";
 import {Dispatch} from "redux";
-import {LoginDataType} from "../../Components/LoginPage/LoginPage";
+import {LoginDataType} from "../../Pages/LoginPage/LoginPage";
 import {setIsInitializedAC} from "./appReducer";
 
 interface initialStateType {

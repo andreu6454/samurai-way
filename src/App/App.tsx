@@ -1,21 +1,21 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import Header from "../Components/Header/Header";
-import Navbar from "../Components/Navbar/Navbar";
-import ProfilePage from "../Components/ProfilePage/ProfilePage";
-import DialogsPage from "../Components/DialogsPage/DialogsPage";
+import Header from "../Pages/Header/Header";
+import Navbar from "../Pages/Navbar/Navbar";
+import ProfilePage from "../Pages/ProfilePage/ProfilePage";
+import DialogsPage from "../Pages/DialogsPage/DialogsPage";
 import {Redirect, Route, Switch} from "react-router-dom";
-import NewsPage from "../Components/NewsPage/NewsPage";
-import MusicPage from "../Components/MusicPage/MusicPage";
-import SettingsPage from "../Components/SettingsPage/SettingsPage";
+import NewsPage from "../Pages/NewsPage/NewsPage";
+import MusicPage from "../Pages/MusicPage/MusicPage";
+import SettingsPage from "../Pages/SettingsPage/SettingsPage";
 import {StateDataType} from "../Redux/Types";
-import FriendsPage from "../Components/FriendsPage/FriendsPage";
-import UsersPage from "../Components/UsersPage/UsersPage";
-import LoginPage from "../Components/LoginPage/LoginPage";
+import FriendsPage from "../Pages/FriendsPage/FriendsPage";
+import UsersPage from "../Pages/UsersPage/UsersPage";
+import LoginPage from "../Pages/LoginPage/LoginPage";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../Redux/ReduxState";
 import {setUsersDataTC} from "../Redux/Reducers/authReducer";
-import PreLoader from "../Items/PreLoader/PreLoader";
+import PreLoader from "../Components/PreLoader/PreLoader";
 
 type AppPropsType = {
     state: StateDataType

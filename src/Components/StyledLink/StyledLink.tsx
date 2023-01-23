@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import style from "../../Components/Navbar/Navbar.module.css";
+import style from "../../Pages/Navbar/Navbar.module.css";
 import {NavLink} from "react-router-dom";
 
 type StyledLinkPropsType = {

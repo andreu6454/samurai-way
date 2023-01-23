@@ -1,6 +1,6 @@
 import {Edit} from '@mui/icons-material';
 import {ChangeEvent, useState} from 'react';
-import style from './EditableSpan.module.css'
+import style from './EditableStatus.module.css'
 import {Box, Popover, TextField, Typography} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 
@@ -8,8 +8,9 @@ import AddIcon from '@mui/icons-material/Add';
 type EditableSpanType = {
     Status: string;
     callBack: (newStatus: string) => void;
+    canBeChanged: boolean;
 };
-export const EditableSpan = (props: EditableSpanType) => {
+export const EditableStatus = (props: EditableSpanType) => {
     const {Status, callBack} = props;
     const [value, setValue] = useState(Status)
     const [newValue, setNewValue] = useState(Status);
@@ -26,7 +27,9 @@ export const EditableSpan = (props: EditableSpanType) => {
     };
 
     const handleClick = (event: any) => {
-        setAnchorEl(event.currentTarget);
+        if(props.canBeChanged){
+            setAnchorEl(event.currentTarget);
+        }
     };
 
     const handleClose = () => {
@@ -42,7 +45,7 @@ export const EditableSpan = (props: EditableSpanType) => {
             <Typography onDoubleClick={handleClick} ml={2}>
                 {value !== "null" && value}
             </Typography>
-            {value !== "null" && <Edit
+            {value !== "null" && props.canBeChanged &&<Edit
                 aria-describedby={id}
                 sx={{ml: 1}}
                 fontSize={'small'}
