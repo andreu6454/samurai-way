@@ -8,6 +8,7 @@ import {addPostsAC, setUserProfileTC} from "../../Redux/Reducers/profilePageRedu
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "../../Redux/ReduxState";
 import PreLoader from "../../Components/PreLoader/PreLoader";
+import Suggestions from "./Suggestions/Suggestions";
 
 
 const ProfilePage = () => {
@@ -29,7 +30,7 @@ const ProfilePage = () => {
                 <div className={style.appContent}>
                     <ProfileInfo/>
                     <div>
-                        {/*<Suggestions/>*/}
+                        <Suggestions/>
                         <NewPost addPost={addPost}/>
                         <MyPosts PostsData={posts}/>
                     </div>
