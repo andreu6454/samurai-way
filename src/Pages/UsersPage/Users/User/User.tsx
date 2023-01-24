@@ -18,8 +18,9 @@ const User = ({user}: UserPropsType) => {
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const onClickHandler = () => {
+    const onClickHandler = (e: any) => {
         dispatch(followTC(user.followed, user.id))
+        e.preventDefault()
     }
     const showFullStatusHandle = (event: any) => {
         setAnchorEl(event.currentTarget);
@@ -50,8 +51,8 @@ const User = ({user}: UserPropsType) => {
                     {user.followed ? "Unfollow" : "Follow"}
                 </button>
             </span>
-            <div className={style.rightBlock}>
-                <div className={style.UserName}>{user.name} </div>
+            <div className={style.rightBlock} >
+                <div className={style.UserName} onClick={showUserHandle} >{user.name} </div>
                 <div className={style.UserStatus} onClick={showFullStatusHandle}>{user.status}</div>
                 <Popover
                     sx={{p: 3}}
