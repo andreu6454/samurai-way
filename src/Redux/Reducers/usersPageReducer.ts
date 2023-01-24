@@ -6,7 +6,7 @@ import {followApi} from "../../Api/follow-api";
 
 const initialState = {
     users: [] as UserType[],
-    pageSize: 10,
+    pageSize: 12,
     totalUsersCount: 20,
     currentPage: 1,
     isDisabled: false

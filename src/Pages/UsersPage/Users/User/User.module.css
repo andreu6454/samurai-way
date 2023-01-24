@@ -1,73 +1,64 @@
 .user{
     display: flex;
-    background-color: #3b3939;
-    width: 400px;
-    height: 100px;
-    border-radius: 15px;
+    width: 300px;
+    min-height: 110px;
     box-sizing: border-box;
     padding: 5px;
     margin-bottom: 10px;
     color: white;
+    border:rgba(240,246,252,0.1) 1px solid;
+    border-radius: 6px;
 }
 .leftBlock{
-    width: 75px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 0 0 10px 5px;
+    width: max-content;
+    height: 100%;
+    align-items: center;
 }
 .avatar{
-    text-align: center;
     height: 70px;
-    border-radius: 10px;
+    border:rgba(240,246,252,0.1) 1px solid;
+    border-radius: 6px;
 }
 .followButton{
-    background-color: cornflowerblue;
-    border: none;
-    border-radius: 5px;
-    color: #3b3939;
+    text-align: center;
+    width: 75px;
+    color: #c9d1d9;
+    background-color: #21262d;
+    padding: 7px 10px;
+    font-size: 14px;
+    border:rgba(240,246,252,0.1) 1px solid;
+    border-radius: 6px;
 }
+
 .followButton:hover{
-    transform: scale(110%);
-    background-color: #749fec;
+    opacity: 70%;
+    border-color: #c9d1d9;
 }
 .followButton:active{
-    transform: scale(90%);
-    color: white;
-}
-.followButton:disabled{
-    opacity: 50%;
+    opacity: 100;
+    border-color: #c9d1d9;
 }
 .rightBlock{
-    border: 1px gray solid;
-    border-radius: 5px;
-    width: 315px;
-    margin-left: 10px;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-.nameBlock{
+    width: 220px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-.locationBlock{
-    width: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-evenly;
 }
-.fullName{
-    font-size: 25px;
-    font-family: "Apple Symbols", system-ui;
+.UserName{
+    font-size: 20px;
+    text-align: center;
 }
-.status{
-    font-size: 23px;
-    font-family: "Apple Symbols", serif;
-    width: 200px;
-    white-space: nowrap;
+.UserStatus{
+    text-align: center;
+    color: #c9d1d9;
     overflow: hidden;
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 200px;
+    line-height: 1.3em;
+    max-height: 50px;
 }

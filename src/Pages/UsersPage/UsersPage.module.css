@@ -2,10 +2,19 @@
     padding: 20px 60px;
     box-sizing: border-box;
     width: 100%;
+    color: #c9d1d9;
 }
 .title{
-    font-size: 30px;
     margin-bottom: 20px;
-    color: black;
+    font-size: 24px;
+    line-height: 24px;
+    color: #c9d1d9;
 }
-
+.Container{
+    display: flex;
+    align-items: center;
+}
+.Pagination{
+    width: max-content;
+    margin-right: 20px;
+}
