@@ -4,12 +4,3 @@
     display: flex;
     justify-content: space-between;
 }
-.stickyClass{
-    position: sticky;
-    top: 20px;
-    content: "";
-    width: 100vw;
-    height: 40px;
-    z-index: 1;
-    border-bottom: #30363d 1px solid;
-}

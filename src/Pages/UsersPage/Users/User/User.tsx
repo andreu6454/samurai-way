@@ -3,9 +3,10 @@ import style from './User.module.css'
 import {UserType} from "../../../../Redux/Types";
 import {useDispatch} from "react-redux";
 import {followTC} from "../../../../Redux/Reducers/usersPageReducer";
-import {NavLink} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import {useAppSelector} from "../../../../Redux/ReduxState";
 import {Box, Popover, Typography} from "@mui/material";
+import {setModalOpenAC} from "../../../../Redux/Reducers/UserModalReducer";
 
 type UserPropsType = {
     user: UserType
@@ -15,12 +16,18 @@ const User = ({user}: UserPropsType) => {
     const altPhoto = "https://www.meme-arsenal.com/memes/b877babd9c07f94b952c7f152c4e264e.jpg"
     const isDisabled = useAppSelector(state => state.UsersPage.isDisabled)
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const onClickHandler = () => {
         dispatch(followTC(user.followed, user.id))
     }
     const showFullStatusHandle = (event: any) => {
         setAnchorEl(event.currentTarget);
+    }
+
+    const showUserHandle = () => {
+        setSearchParams({userId: String(user.id)})
+        dispatch(setModalOpenAC(true))
     }
 
     const handleClose = () => {
@@ -34,10 +41,8 @@ const User = ({user}: UserPropsType) => {
     return (
         <div className={style.user}>
             <span className={style.leftBlock}>
-                <NavLink to={'/profile/' + user.id}>
-                    <img src={user.photos.small ? user.photos.small : altPhoto} alt={"Avatar"}
-                         className={style.avatar}/>
-                </NavLink>
+                <img onClick={showUserHandle} src={user.photos.small ? user.photos.small : altPhoto} alt={"Avatar"}
+                     className={style.avatar}/>
                 <button onClick={onClickHandler}
                         className={style.followButton}
                         disabled={isDisabled}
@@ -63,7 +68,7 @@ const User = ({user}: UserPropsType) => {
                         <Typography>
                             Status:
                         </Typography>
-                        <Typography >
+                        <Typography>
                             {user.status}
                         </Typography>
                     </Box>

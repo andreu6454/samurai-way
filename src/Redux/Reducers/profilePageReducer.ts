@@ -46,41 +46,41 @@ export const addPostsAC = (post: string) => {
 }
 type addPostsACType = ReturnType<typeof addPostsAC>
 
-export const setUserProfileAC = (user: profileInfoResponseType) => {
+export const setAuthorizedUserProfileAC = (user: profileInfoResponseType) => {
     return {
         type: "SET-USER-PROFILE",
         user
     } as const
 }
-type setUserProfileACType = ReturnType<typeof setUserProfileAC>
+type setUserProfileACType = ReturnType<typeof setAuthorizedUserProfileAC>
 
-export const setUserStatusAC = (status: string) => {
+export const setAuthorizedUserStatusAC = (status: string) => {
     return {
         type: "SET-STATUS",
         status
     } as const
 }
-type setUserStatusACType = ReturnType<typeof setUserStatusAC>
+type setUserStatusACType = ReturnType<typeof setAuthorizedUserStatusAC>
 
-export const changeUserStatusAC = (status: string) => {
+export const changeAuthorizedUserStatusAC = (status: string) => {
     return {
         type: "CHANGE-STATUS",
         status
     } as const
 }
-type changeUserStatusACType = ReturnType<typeof changeUserStatusAC>
+type changeUserStatusACType = ReturnType<typeof changeAuthorizedUserStatusAC>
 
 ///////// Thunks
 
-export const setUserProfileTC = (userId: number) => {
+export const setAuthorizedUserProfileTC = (userId: number) => {
     return (dispatch: Dispatch) => {
         dispatch(setIsLoadingAC(true))
-         const profileInfo = profileApi.getProfileInfo(userId).then((res) => {
-                dispatch(setUserProfileAC(res.data))
+        const profileInfo = profileApi.getProfileInfo(userId).then((res) => {
+                dispatch(setAuthorizedUserProfileAC(res.data))
             }
         )
         const profileStatus = profileApi.getStatus(userId).then((res) => {
-                dispatch(setUserStatusAC(res.data))
+                dispatch(setAuthorizedUserStatusAC(res.data))
             }
         )
         Promise.all([profileStatus,profileInfo]).then(()=>{
@@ -89,20 +89,11 @@ export const setUserProfileTC = (userId: number) => {
     }
 }
 
-// export const setUserStatusTC = (userId: number) => {
-//     return (dispatch: Dispatch) => {
-//         profileApi.getStatus(userId).then((res) => {
-//                 dispatch(setUserStatusAC(res.data))
-//             }
-//         )
-//     }
-// }
-
 export const changeUserStatusTC = (status: string) => {
     return (dispatch: Dispatch) => {
         profileApi.changeStatus(status).then((res) => {
                 if (res.data.resultCode === 0) {
-                    dispatch(changeUserStatusAC(status))
+                    dispatch(changeAuthorizedUserStatusAC(status))
                 }
             }
         )

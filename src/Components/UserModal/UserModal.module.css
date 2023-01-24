@@ -1,0 +1,115 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modalActive {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalContent {
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #161b22;
+    min-height: 200px;
+    width: 50vw;
+    transform: scale(0.5);
+    transition: 0.5s;
+    color: #c9d1d9;
+}
+
+.modalContentActive {
+    margin-top: 100px;
+    transform: scale(1);
+    color: #c9d1d9;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #161b22;
+    min-height: 200px;
+    width: 50vw;
+    transition: 0.5s;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.avatarContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: rgba(240, 246, 252, 0.1) 1px solid;
+}
+.followButton {
+    margin-top: 15px;
+    width: 100%;
+    color: #c9d1d9;
+    background-color: #21262d;
+    padding: 7px 16px;
+    font-size: 14px;
+    border: rgba(240, 246, 252, 0.1) 1px solid;
+    border-radius: 6px;
+    font-weight: 500;
+    line-height: 20px;
+}
+.followButton:hover{
+    opacity: 70%;
+    border-color: #c9d1d9;
+}
+.followButton:active{
+    opacity: 100;
+    border-color: #c9d1d9;
+}
+.description{
+    height: 300px;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.fullName {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.status{
+}
+.Links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.item{
+    width: max-content;
+}
+

@@ -11,6 +11,7 @@ import {
 } from "../../Redux/Reducers/usersPageReducer";
 import Users from "./Users/Users";
 import {FormControl, MenuItem, Pagination, Select, SelectChangeEvent} from "@mui/material";
+import UserModal from "../../Components/UserModal/UserModal";
 
 const UsersPage = () => {
     const {
@@ -62,7 +63,7 @@ const UsersPage = () => {
                     </Select>
                 </FormControl>
             </div>
-
+            <UserModal/>
         </div>
     );
 };
