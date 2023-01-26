@@ -1,12 +1,14 @@
 .settingsModule{
-    width: 800px;
-    height: 400px;
+    width: 100%;
+    height: max-content;
     border-radius: 5px;
-    background-color: #3b3939;
-    margin: 20px auto 20px auto;
+    padding: 20px 60px;
     color: white;
+    box-sizing: border-box;
 }
-.settingsModule h1{
-    width: 250px;
-    margin: auto;
+.title{
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 24px;
+    color: #c9d1d9;
 }

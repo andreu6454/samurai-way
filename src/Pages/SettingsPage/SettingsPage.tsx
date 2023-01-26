@@ -4,7 +4,7 @@ import style from './Settings.module.css'
 const SettingsPage = () => {
     return (
         <div className={style.settingsModule}>
-            <h1>Settings Page</h1>
+            <div className={style.title}>Settings Page</div>
         </div>
     );
 };
