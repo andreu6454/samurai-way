@@ -49,6 +49,7 @@
     justify-content: space-evenly;
 }
 .UserName{
+    color: #58a6ff;
     font-size: 20px;
     text-align: center;
     cursor: pointer;
