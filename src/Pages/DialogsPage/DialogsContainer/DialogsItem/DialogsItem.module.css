@@ -1,11 +1,13 @@
 .dialog{
-    color: #3b3939;
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    border-top: #30363d 1px solid;
+    border-bottom: #30363d 1px solid;
+    padding: 5px 20px;
 }
 .dialog a{
-    color: #3b3939;
+    color: #58a6ff;
     text-decoration: none;
 }
 .dialog a.active{

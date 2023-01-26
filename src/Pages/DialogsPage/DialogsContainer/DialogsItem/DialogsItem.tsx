@@ -14,12 +14,10 @@ const DialogsItem = (props: DialogsPropsType) => {
 
     return (
         <div>
-            <hr></hr>
             <div className={style.dialog}>
                 <img className={style.avatar} src={props.avatar} alt={"avatar"}></img>
                 <NavLink to={path} > {props.name} </NavLink>
             </div>
-            <hr></hr>
         </div>
     );
 };

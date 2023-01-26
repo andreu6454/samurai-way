@@ -1,22 +1,22 @@
 .dialogs{
-    display: grid;
-    grid-template-columns: 3fr 9fr;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
 .dialogsItems{
     padding: 10px;
-    width: 100%;
+    width: 30%;
 }
 .messages{
     padding: 10px;
     width: 600px;
-    margin: auto;
 }
 .messagesZone{;
     width: 600px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-    background-color: #3b3939;
+    border: #30363d 1px solid;
 }
 .myMessage{
     margin-left: 30px;
