@@ -20,13 +20,13 @@ export const profilePageReducer = (state: ProfilePageDataType = initialState, ac
             }
             return {...state, PostsData: [newPost, ...state.PostsData]};
         }
-        case "SET-USER-PROFILE": {
+        case "SET-AUTHORIZED-USER-PROFILE": {
             return {...state, userProfile: action.user}
         }
-        case "SET-STATUS": {
+        case "SET-AUTHORIZED-USER-STATUS": {
             return {...state, status: action.status}
         }
-        case "CHANGE-STATUS": {
+        case "CHANGE-AUTHORIZED-USER-STATUS": {
             return {...state, status: action.status}
         }
         default:
@@ -48,7 +48,7 @@ type addPostsACType = ReturnType<typeof addPostsAC>
 
 export const setAuthorizedUserProfileAC = (user: profileInfoResponseType) => {
     return {
-        type: "SET-USER-PROFILE",
+        type: "SET-AUTHORIZED-USER-PROFILE",
         user
     } as const
 }
@@ -56,7 +56,7 @@ type setUserProfileACType = ReturnType<typeof setAuthorizedUserProfileAC>
 
 export const setAuthorizedUserStatusAC = (status: string) => {
     return {
-        type: "SET-STATUS",
+        type: "SET-AUTHORIZED-USER-STATUS",
         status
     } as const
 }
@@ -64,7 +64,7 @@ type setUserStatusACType = ReturnType<typeof setAuthorizedUserStatusAC>
 
 export const changeAuthorizedUserStatusAC = (status: string) => {
     return {
-        type: "CHANGE-STATUS",
+        type: "CHANGE-AUTHORIZED-USER-STATUS",
         status
     } as const
 }
