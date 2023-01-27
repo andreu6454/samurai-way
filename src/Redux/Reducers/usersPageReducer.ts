@@ -9,7 +9,8 @@ const initialState = {
     pageSize: 12,
     totalUsersCount: 20,
     currentPage: 1,
-    isDisabled: false
+    isDisabled: false,
+    isLoading: false
 } as UsersPageType
 
 type usersPageReducerActionType =
@@ -20,6 +21,7 @@ type usersPageReducerActionType =
     | setCurrentPageACType
     | setTotalUsersCountACType
     | setIsDisabledACType
+    | setIsLoadingACType
 export const usersPageReducer = (state: UsersPageType = initialState, action: usersPageReducerActionType) => {
     switch (action.type) {
         case "FOLLOW":
@@ -50,6 +52,8 @@ export const usersPageReducer = (state: UsersPageType = initialState, action: us
             return {...state, pageSize: action.pageSize}
         case "SET-IS-DISABLED":
             return {...state, isDisabled: action.isDisabled}
+        case "SET-USERS-LOADING":
+            return {...state, isLoading: action.isLoading}
         default:
             return state
     }
@@ -112,17 +116,28 @@ export const setIsDisabledAC = (isDisabled: boolean) => {
 }
 export type setIsDisabledACType = ReturnType<typeof setIsDisabledAC>
 
+export const setUsersLoadingAC = (isLoading: boolean) => {
+    return {
+        type: "SET-USERS-LOADING",
+        isLoading
+    } as const
+}
+export type setIsLoadingACType = ReturnType<typeof setUsersLoadingAC>
+
 ///////// Thunks
 
 export const setUsersTC = () => {
     return (dispatch: Dispatch) => {
+        dispatch(setUsersLoadingAC(true))
         usersApi.getUsers()
             .then(
                 (res) => {
+                    dispatch(setUsersLoadingAC(false))
                     dispatch(setUsersAC(res.data.items))
                     dispatch(setTotalUsersCountAC(res.data.totalCount))
                 })
             .catch((error) => {
+                dispatch(setUsersLoadingAC(false))
                 console.log(error)
             })
     }
