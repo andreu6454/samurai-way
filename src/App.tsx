@@ -10,6 +10,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import {PrivateRoutes} from "./Routes/PrivateRoutes";
 import {Layout} from "./Components/Layout/Layout";
 import {appRoutes} from "./Routes/constants";
+import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 
 
 export const routes = createHashRouter(
@@ -25,7 +26,7 @@ export const routes = createHashRouter(
             </Route>
             <Route path={appRoutes.LOGIN} element={<LoginPage/>}/>
             <Route path={''} element={<Navigate to={appRoutes.PROFILE}/>}/>
-            <Route path={appRoutes.NOTFOUND} element={<div> 404: page not found</div>}/>
+            <Route path={appRoutes.NOTFOUND} element={<NotFoundPage/>}/>
         </Route>,
     ),
 );

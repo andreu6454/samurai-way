@@ -1,0 +1,29 @@
+.notFoundPage{
+    width: 100vw;
+    height: 50vh;
+    min-height: 425px;
+    background-image: url('../../Assets/images/404pageBg.jpeg');
+    background-size: cover;
+}
+.container{
+    position: relative;
+    max-width: 899px;
+    margin: auto;
+    display: flex;
+    top: 30%;
+    right: -3%;
+    box-sizing: border-box;
+}
+.words{
+    position:relative;
+    z-index: 9;
+}
+.item{
+    position: relative;
+    z-index: 9;
+}
+.item2{
+    position: relative;
+    z-index: 8;
+    left: -10%;
+}
