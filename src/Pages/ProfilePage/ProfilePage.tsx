@@ -15,13 +15,17 @@ const ProfilePage = () => {
     const posts = useAppSelector<Array<PostsDataType>>(state => state.ProfilePage.PostsData)
     const isLoading = useAppSelector(state => state.app.isLoading)
     const userId = useAppSelector(state => state.auth.authorizedUserId)
+    const fullName = useAppSelector(state => state.ProfilePage.userProfile.fullName)
     const dispatch = useDispatch()
     const addPost = (post: string) => {
         dispatch(addPostsAC(post))
     }
 
     useEffect(() => {
-        dispatch(setAuthorizedUserProfileTC(Number(userId)))
+        if(!fullName){
+            dispatch(setAuthorizedUserProfileTC(Number(userId)))
+        }
+
     }, [userId])
 
     return (
