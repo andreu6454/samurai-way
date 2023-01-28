@@ -54,7 +54,7 @@ const UsersPage = () => {
                                     onChange={pageChangeHandle}
                                     count={totalPagesCount}
                                     shape="rounded"/>
-                        User per page:
+                        Users per page:
                         <FormControl>
                             <Select
                                 sx={{ml: 1}}
