@@ -3,6 +3,7 @@ import style from "./ProfileInfo.module.css"
 import {useAppSelector} from "../../../Redux/ReduxState";
 import {profileInfoResponseType} from "../../../Api/users-api";
 import ProfileStatus from "./ProfileStatus";
+import Avatar from "./Avatar";
 
 const ProfileInfo = () => {
     const profileInfo = useAppSelector<profileInfoResponseType>(state => state.ProfilePage.userProfile)
@@ -10,10 +11,7 @@ const ProfileInfo = () => {
 
     return (
         <div className={style.ProfileBlock}>
-            <img
-                className={style.AvatarBlock}
-                src={profileInfo.photos.small ? profileInfo.photos.small : "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg"}
-                alt={"avatar"}/>
+            <Avatar profilePhoto={profileInfo.photos.large}/>
             <div className={style.DescriptionBlock}>
                 <div className={style.MainName}>
                     {profileInfo.fullName}

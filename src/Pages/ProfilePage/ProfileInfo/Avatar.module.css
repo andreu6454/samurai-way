@@ -1,0 +1,41 @@
+.AvatarBlock{
+    position: relative;
+    margin-top: 10%;
+    width: 296px;
+    height: auto;
+    border-radius: 50%;
+    z-index: 100;
+}
+.AvatarBlock img{
+    width: 296px;
+    height: auto;
+    border-radius: 50%;
+}
+.ChangeAvatarSuggestion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    margin-top: 10%;
+    width: 296px;
+    height: auto;
+    border-radius: 50%;
+    z-index: 100;
+}
+.ChangeAvatarSuggestion img{
+    width: 296px;
+    height: auto;
+    border-radius: 50%;
+}
+.ChangeAvatarSuggestion::after{
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    background-color: #8b949e;
+    color: #c9d1d9;
+    content: "Click to change your avatar";
+    padding: 5px 20px;
+    border-radius: 7px;
+    pointer-events: none;
+}

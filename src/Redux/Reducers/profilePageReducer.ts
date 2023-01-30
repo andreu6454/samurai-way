@@ -8,7 +8,12 @@ import {profileApi} from "../../Api/profile-api";
 
 const initialState = InitialState.ProfilePage
 
-type ProfilePageReducerType = addPostsACType | setUserProfileACType | changeUserStatusACType | setUserStatusACType
+type ProfilePageReducerType =
+    addPostsACType
+    | setUserProfileACType
+    | changeUserStatusACType
+    | setUserStatusACType
+    | changeAuthorizedAvatarACType
 
 export const profilePageReducer = (state: ProfilePageDataType = initialState, action: ProfilePageReducerType) => {
     switch (action.type) {
@@ -28,6 +33,9 @@ export const profilePageReducer = (state: ProfilePageDataType = initialState, ac
         }
         case "CHANGE-AUTHORIZED-USER-STATUS": {
             return {...state, status: action.status}
+        }
+        case "CHANGE-AUTHORIZED-USER-AVATAR":{
+            return {...state, ...state.userProfile ,...state.userProfile.photos, large: String(action.avatar)}
         }
         default:
             return state;
@@ -70,6 +78,14 @@ export const changeAuthorizedUserStatusAC = (status: string) => {
 }
 type changeUserStatusACType = ReturnType<typeof changeAuthorizedUserStatusAC>
 
+export const changeAuthorizedAvatarAC = (avatar: File) => {
+    return {
+        type: "CHANGE-AUTHORIZED-USER-AVATAR",
+        avatar
+    } as const
+}
+type changeAuthorizedAvatarACType = ReturnType<typeof changeAuthorizedAvatarAC>
+
 ///////// Thunks
 
 export const setAuthorizedUserProfileTC = (userId: number) => {
@@ -83,7 +99,7 @@ export const setAuthorizedUserProfileTC = (userId: number) => {
                 dispatch(setAuthorizedUserStatusAC(res.data))
             }
         )
-        Promise.all([profileStatus,profileInfo]).then(()=>{
+        Promise.all([profileStatus, profileInfo]).then(() => {
             dispatch(setIsLoadingAC(false))
         })
     }
@@ -94,6 +110,19 @@ export const changeUserStatusTC = (status: string) => {
         profileApi.changeStatus(status).then((res) => {
                 if (res.data.resultCode === 0) {
                     dispatch(changeAuthorizedUserStatusAC(status))
+                }
+            }
+        )
+    }
+}
+export const changeUserAvatarTC = (file: File) => {
+    return (dispatch: Dispatch, getState: any) => {
+        const state = getState()
+        profileApi.changeAvatar(file).then((res) => {
+                if (res.data.resultCode === 0) {
+                    profileApi.getProfileInfo(state.auth.authorizedUserId).then((res) => {
+                        dispatch(setAuthorizedUserProfileAC(res.data))
+                    })
                 }
             }
         )
