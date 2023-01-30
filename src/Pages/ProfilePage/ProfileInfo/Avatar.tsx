@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import style from "./Avatar.module.css";
 import {UploadFileWrapper} from "../../../Components/UploadFileWrapper/UploadFileWrapper";
 import {useDispatch} from "react-redux";
@@ -7,7 +7,7 @@ import {changeUserAvatarTC} from "../../../Redux/Reducers/profilePageReducer";
 type AvatarPropsType = {
     profilePhoto: string
 }
-const Avatar = ({profilePhoto}: AvatarPropsType) => {
+const Avatar = memo(({profilePhoto}: AvatarPropsType) => {
     const [isHover, setIsHover] = useState(false)
 
     const dispatch = useDispatch()
@@ -37,6 +37,6 @@ const Avatar = ({profilePhoto}: AvatarPropsType) => {
             </UploadFileWrapper>
         </div>
     );
-};
+});
 
 export default Avatar;
