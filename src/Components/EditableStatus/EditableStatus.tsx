@@ -41,9 +41,9 @@ export const EditableStatus = (props: EditableSpanType) => {
     return (
         <div className={style.EditableSpan}>
             <Typography fontSize={"20px"} onDoubleClick={handleClick} ml={2}>
-                {value !== "null" && value}
+                {value !== "" && value}
             </Typography>
-            {value !== "null" && <Edit
+            {value !== "" && <Edit
                 aria-describedby={id}
                 sx={{ml: 1}}
                 fontSize={'small'}

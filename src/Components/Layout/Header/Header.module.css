@@ -3,12 +3,25 @@
     justify-content: space-between;
     align-items: center;
     background-color: #161b22;
-    padding: 5px 20px 5px 20px;
+    padding: 16px 32px;
     border-radius: 5px;
-    height: 50px;
+    height: 60px;
     font-weight: 600;
     color: #f0f6fc;
     white-space: nowrap;
+}
+.leftBlock{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+}
+
+.rightBlock{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
 }
 
 .gitHubSymbol{
@@ -16,4 +29,19 @@
     overflow: visible;
     vertical-align: text-bottom;
     fill: currentColor;
+}
+.UsersSearch{
+    margin-left: 16px;
+    padding: 5px 12px;
+    width: 272px;
+    height: 28px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #c9d1d9;
+    font-size: 14px;
+}
+
+.UsersSearch:focus{
+    width: 400px;
 }

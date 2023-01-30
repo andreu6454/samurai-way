@@ -1,8 +1,8 @@
 import React, {memo, useState} from 'react';
 import style from "./Avatar.module.css";
-import {UploadFileWrapper} from "../../../Components/UploadFileWrapper/UploadFileWrapper";
+import {UploadFileWrapper} from "../../../../Components/UploadFileWrapper/UploadFileWrapper";
 import {useDispatch} from "react-redux";
-import {changeUserAvatarTC} from "../../../Redux/Reducers/profilePageReducer";
+import {changeUserAvatarTC} from "../../../../Redux/Reducers/profilePageReducer";
 
 type AvatarPropsType = {
     profilePhoto: string
