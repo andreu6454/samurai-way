@@ -8,7 +8,7 @@ type AvatarPropsType = {
     profilePhoto: string
 }
 const Avatar = ({profilePhoto}: AvatarPropsType) => {
-    const [isHover,setIsHover] = useState(false)
+    const [isHover, setIsHover] = useState(false)
 
     const dispatch = useDispatch()
     const avatarSuggestionHandle = () => {
@@ -18,11 +18,22 @@ const Avatar = ({profilePhoto}: AvatarPropsType) => {
         dispatch(changeUserAvatarTC(file))
     }
     return (
-        <div className={isHover? style.ChangeAvatarSuggestion : style.AvatarBlock}>
+        <div className={isHover ? style.ChangeAvatarSuggestion : style.AvatarBlock}>
             <UploadFileWrapper callback={changeAvatarHandle}>
-                <img
-                    src={profilePhoto ? profilePhoto : "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg"}
-                    alt={"avatar"} onMouseEnter={avatarSuggestionHandle} onMouseLeave={avatarSuggestionHandle}/>
+                {!profilePhoto ?
+                    <div className={style.avatarZone}>
+                        <span>
+                            Your avatar should be here
+                        </span>
+                        <span>
+                             click here to upload photo
+                        </span>
+                    </div>:
+                    <img
+                        className={style.Avatar}
+                        src={profilePhoto}
+                        alt={"avatar"} onMouseEnter={avatarSuggestionHandle} onMouseLeave={avatarSuggestionHandle}/>
+                }
             </UploadFileWrapper>
         </div>
     );

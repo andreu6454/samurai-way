@@ -25,8 +25,7 @@ const ProfilePage = () => {
         if(!fullName){
             dispatch(setAuthorizedUserProfileTC(Number(userId)))
         }
-
-    }, [userId])
+    }, [])
 
     return (
         <div>
