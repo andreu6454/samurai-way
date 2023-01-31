@@ -1,14 +1,16 @@
 interface initialStateType {
     isLoading: boolean,
-    isInitialized: boolean
+    isInitialized: boolean,
+    isVisible: boolean
 }
 
 const initialState: initialStateType = {
     isLoading: false,
-    isInitialized: false
+    isInitialized: false,
+    isVisible: true
 }
 
-type appReducerActionType = setIsLoadingACType | setIsInitializedACType
+type appReducerActionType = setIsLoadingACType | setIsInitializedACType | setAvatarVisibleACType
 
 export const appReducer = (state: initialStateType = initialState, action: appReducerActionType) => {
     switch (action.type) {
@@ -16,6 +18,9 @@ export const appReducer = (state: initialStateType = initialState, action: appRe
             return {...state, isLoading: action.isLoading}
         case "SET-INITIALIZED":
             return {...state, isInitialized: action.isInitialized}
+        case "SET-AVATAR-VISIBLE":
+            console.log(action.isVisible)
+            return {...state, isVisible: action.isVisible}
         default:
             return state
     }
@@ -36,5 +41,13 @@ export const setIsInitializedAC = (isInitialized: boolean) => {
     } as const
 }
 type setIsInitializedACType = ReturnType<typeof setIsInitializedAC>
+
+export const setAvatarVisibleAC = (isVisible: boolean) => {
+    return {
+        type: 'SET-AVATAR-VISIBLE',
+        isVisible
+    } as const
+}
+type setAvatarVisibleACType = ReturnType<typeof setAvatarVisibleAC>
 
 

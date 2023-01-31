@@ -16,3 +16,20 @@
     width: 50%;
     justify-content: space-between;
 }
+.avatarAndLogin{
+    position: fixed;
+    display: flex;
+    height: 48px;
+    align-items: center;
+    top: 0;
+    left: 12%;
+    color: #c9d1d9;
+    font-size: 14px;
+    font-weight: bold;
+}
+.avatarAndLogin img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
