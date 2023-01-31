@@ -29,8 +29,7 @@ export const InitialState = {
             },
         },
         status: "",
-        isLoading: false,
-        profileEditable: false
+        isLoading: false
     },
     MessagesPage: {
         DialogsData: [
