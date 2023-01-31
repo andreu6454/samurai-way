@@ -5,11 +5,14 @@ export const authApi = {
     me() {
         return instance.get<{ data: isAuthResponseType, resultCode: number }>('/auth/me')
     },
-    login({email, password, rememberMe}: LoginDataType) {
-        return instance.post<isLoginedResponseType>('/auth/login', {email, password, rememberMe})
+    login({email, password, rememberMe , captcha}: LoginDataType) {
+        return instance.post<isLoginedResponseType>('/auth/login', {email, password, rememberMe, captcha})
     },
     logOut(){
         return instance.delete<logOutResponseType>('/auth/login')
+    },
+    getCaptcha(){
+        return instance.get<{url: string}>('/security/get-captcha-url')
     }
 }
 
@@ -25,7 +28,7 @@ export type isLoginedResponseType = {
     data: {
         userId: number
     }
-
+    captcha: string
 }
 
 export type logOutResponseType = {

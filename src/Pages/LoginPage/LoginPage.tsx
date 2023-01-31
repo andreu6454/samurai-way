@@ -1,39 +1,29 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useDispatch} from "react-redux";
-import {
-    Box,
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    Checkbox,
-    FormControl,
-    FormControlLabel,
-    IconButton,
-    Input,
-    InputAdornment,
-    InputLabel,
-    TextField,
-    Typography
-} from "@mui/material";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {Visibility, VisibilityOff} from '@mui/icons-material';
-import {logInTC} from "../../Redux/Reducers/authReducer";
+import {getCaptchaTC, logInTC} from "../../Redux/Reducers/authReducer";
 import {useAppSelector} from "../../Redux/ReduxState";
 import {Navigate} from "react-router-dom";
 import {appRoutes} from "../../Routes/constants";
+import style from './LoginPage.module.css'
 
 export interface LoginDataType {
     email: string,
     password: string,
     rememberMe: boolean,
+    captcha: string
 }
 
 const LoginPage = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const isAuth = useAppSelector(state => state.auth.isAuth)
-
+    const {isAuth, captchaURL, isCaptchaRequired} = useAppSelector(state => state.auth)
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        if(isCaptchaRequired){
+            dispatch(getCaptchaTC())
+        }
+    },[isCaptchaRequired])
+
 
     const {
         register,
@@ -45,108 +35,62 @@ const LoginPage = () => {
             email: '',
             password: '',
             rememberMe: false,
+            captcha: ''
         },
     });
     const password = useRef({});
     password.current = watch('password', '');
 
-    const handleClickShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    };
-    const onSubmit: SubmitHandler<LoginDataType> = ({email, password, rememberMe}: LoginDataType) => {
-        dispatch(logInTC({email, password, rememberMe}))
+    const onSubmit: SubmitHandler<LoginDataType> = ({email, password, rememberMe, captcha}: LoginDataType) => {
+        dispatch(logInTC({email, password, rememberMe, captcha}))
     };
 
     if (isAuth) {
         return <Navigate to={appRoutes.PROFILE}/>
     }
     return (
-        <Box>
-            <Card sx={{width: 413, m: '40px auto', py: 3}}>
-                <CardContent>
-                    <Typography variant={'h5'} fontWeight={'Bold'} textAlign={'center'}>
-                        Sign In
-                    </Typography>
-                    <Box sx={{display: 'flex', flexDirection: 'column', px: 1}}>
-                        <FormControl sx={{m: 1}} variant="standard">
-                            <TextField
-                                id="outlined-helperText"
-                                label="Email"
-                                variant="standard"
-                                {...register('email', {required: 'Email Address is required'})}
-                                error={!!errors.email}
-                            />
-                            <Box height="24px">
-                                {errors.email && (
-                                    <Typography variant="body2" color="error">
-                                        {errors.email.message}
-                                    </Typography>
-                                )}
-                            </Box>
-                        </FormControl>
-                        <FormControl sx={{m: 1}} variant="standard">
-                            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                            <Input
-                                id="register-password"
-                                type={showPassword ? 'text' : 'password'}
-                                {...register('password', {
-                                    required: true,
-                                    minLength: {
-                                        value: 8,
-                                        message: 'Password must have at least 8 characters',
-                                    },
-                                })}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                        >
-                                            {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                error={!!errors.password}
-                            />
-                            <Box height="24px">
-                                {errors.password && (
-                                    <Typography variant="body2" color="error">
-                                        {errors.password.message}
-                                    </Typography>
-                                )}
-                            </Box>
-                        </FormControl>
-                        <FormControlLabel
-                            sx={{m: 1}}
-                            control={
-                                <Checkbox
-                                    {...register('rememberMe')}
-                                    checked={watch('rememberMe')}
-                                    name="rememberMe"
-                                />
-                            }
-                            label="Remember me"
-                        />
-                    </Box>
-                </CardContent>
-                <CardActions
-                    sx={{display: 'flex', flexDirection: 'column', gap: '31px', px: 3}}
-                >
-                    <Button
-                        fullWidth
-                        variant="contained"
-                        sx={{borderRadius: 30, bgcolor: '#366EFF', mt: 5}}
-                        onClick={handleSubmit(onSubmit)}
-                    >
-                        Sign In
-                    </Button>
-                </CardActions>
-            </Card>
-        </Box>
+        <div className={style.loginPage}>
+            <div className={style.title}>
+                Sign in
+            </div>
+            <div className={style.loginBlock}>
+                <div className={style.inputBlock}>
+                    Email address
+                    <input
+                        {...register('email', {required: true})}
+                        type={'email'}
+                        className={style.Input}/>
+                    {errors.email && <span className={style.error}>Email required</span>}
+                </div>
+                <div className={style.inputBlock}>
+                    Password
+                    <input
+                        {...register('password', {required: true})}
+                        type={'password'}
+                        className={style.Input}/>
+                    {errors.password && <span className={style.error}>Password required</span>}
+                </div>
+                <div className={style.rememberMeBlock}>
+                    <input
+                        {...register('rememberMe')}
+                        type={'checkbox'}
+                        className={style.checkBox}/>
+                    Remember me?
+                </div>
+                {captchaURL &&
+                <div className={style.captchaBlock}>
+                    <img src={captchaURL} alt={'captcha'}/>
+                    <input
+                        {...register('captcha', {required: true})}
+                        className={style.Input}></input>
+                    {errors.captcha && <span className={style.error}>Captcha required</span>}
+                </div>}
+                <button type={'submit'} className={style.LoginButton} onClick={handleSubmit(onSubmit)}> Sign in</button>
+            </div>
+            <div className={style.registerRedirectBlock}>
+                No account yet? <a href={'https://social-network.samuraijs.com/signUp'}>Sign up</a>.
+            </div>
+        </div>
     );
 };
 

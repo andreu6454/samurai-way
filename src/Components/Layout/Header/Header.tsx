@@ -13,7 +13,7 @@ const Header = () => {
         dispatch(logOutTC())
     }
 
-    return (
+    return ( isAuth ?
         <nav className={style.appNav}>
             <div className={style.leftBlock}>
                 <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true"
@@ -34,7 +34,7 @@ const Header = () => {
                     </Button>
                 }
             </div>
-        </nav>
+        </nav> : <div/>
     );
 };
 

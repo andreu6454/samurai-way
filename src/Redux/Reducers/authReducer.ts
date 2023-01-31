@@ -7,16 +7,25 @@ interface initialStateType {
     authorizedUserId: null | number,
     email: null | string,
     login: null | string,
-    isAuth: boolean
+    isAuth: boolean,
+    captchaURL: string,
+    isCaptchaRequired: boolean
 }
 
 const initialState: initialStateType = {
     authorizedUserId: 2,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
+    captchaURL: "",
+    isCaptchaRequired: false
 }
-type authReducerActionType = setUserDataACType | logInACType | logOutACType
+type authReducerActionType =
+    setUserDataACType
+    | logInACType
+    | logOutACType
+    | setCaptchaACType
+    | setIsCaptchaRequiredAcType
 export const authReducer = (state = initialState, action: authReducerActionType) => {
     switch (action.type) {
         case "SET-USER-DATA": {
@@ -29,10 +38,16 @@ export const authReducer = (state = initialState, action: authReducerActionType)
             }
         }
         case "LOGIN": {
-            return {...state, authorizedUserId: action.userId, isAuth: true}
+            return {...state, authorizedUserId: action.userId, isAuth: true, captchaURL: '', isCaptchaRequired: false}
         }
         case "LOGOUT": {
             return {...state, isAuth: false, authorizedUserId: null}
+        }
+        case "SET-LOGIN-CAPTCHA": {
+            return {...state, captchaURL: action.captcha}
+        }
+        case "SET-IS-CAPTCHA-REQUIRED": {
+            return {...state, isCaptchaRequired: action.isCaptchaRequire}
         }
         default:
             return state
@@ -59,6 +74,24 @@ export const logInAC = (userId: number) => {
 
 type logInACType = ReturnType<typeof logInAC>
 
+export const setCaptchaAC = (captcha: string) => {
+    return {
+        type: "SET-LOGIN-CAPTCHA",
+        captcha
+    } as const
+}
+
+type setCaptchaACType = ReturnType<typeof setCaptchaAC>
+
+export const setIsCaptchaRequiredAc = (isCaptchaRequire: boolean) => {
+    return {
+        type: "SET-IS-CAPTCHA-REQUIRED",
+        isCaptchaRequire
+    } as const
+}
+
+type setIsCaptchaRequiredAcType = ReturnType<typeof setIsCaptchaRequiredAc>
+
 export const logOutAC = () => {
     return {
         type: "LOGOUT",
@@ -81,11 +114,14 @@ export const isAuthUser = () => {
     }
 }
 
-export const logInTC = ({email, password, rememberMe}: LoginDataType) => {
+export const logInTC = ({email, password, rememberMe, captcha}: LoginDataType) => {
     return (dispatch: Dispatch) => {
-        authApi.login({email, password, rememberMe}).then((res) => {
+        authApi.login({email, password, rememberMe, captcha}).then((res) => {
             if (res.data.resultCode === 0) {
                 dispatch(logInAC(res.data.data.userId))
+            }
+            if (res.data.resultCode === 10) {
+                dispatch(setIsCaptchaRequiredAc(true))
             }
         })
     }
@@ -100,3 +136,12 @@ export const logOutTC = () => {
         })
     }
 }
+
+export const getCaptchaTC = () => {
+    return (dispatch: Dispatch) => {
+        authApi.getCaptcha().then((res) => {
+            dispatch(setCaptchaAC(res.data.url))
+        })
+    }
+}
+
