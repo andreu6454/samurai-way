@@ -42,6 +42,7 @@ const ProfileInfo = () => {
                                 <ProfileStatus/>
                             </div>
                         }
+                        {/*вынести в отдельный файл*/}
                         <div className={style.ProfileDescription}>
                             <div className={style.descriptionItem}>
                                 About me:

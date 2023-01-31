@@ -1,6 +1,7 @@
 .ProfileBlock{
     position: relative;
     top: -70px;
+    width: 296px;
 }
 .DescriptionBlock{
     margin-top: 20px;
