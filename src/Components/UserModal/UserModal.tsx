@@ -24,7 +24,9 @@ const UserModal = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setUserStatusTC(Number(userId)))
+        if(Number(userId) !== 0){
+            dispatch(setUserStatusTC(Number(userId)))
+        }
     }, [userId])
 
     const onClickHandler = () => {

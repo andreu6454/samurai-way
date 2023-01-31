@@ -30,7 +30,9 @@ const UsersPage = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(setCurrentPageUsersTc(currentPage, pageSize))
+        if(totalUsersCount !== 20){
+            dispatch(setCurrentPageUsersTc(currentPage, pageSize))
+        }
     }, [currentPage, pageSize])
 
     const pageChangeHandle = (event: React.ChangeEvent<unknown>, page: number) => {
