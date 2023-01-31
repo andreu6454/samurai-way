@@ -4,7 +4,8 @@ import {InitialState} from "../InitialState";
 import {profileInfoResponseType} from "../../Api/users-api";
 import {setIsLoadingAC} from "./appReducer";
 import {Dispatch} from "redux";
-import {profileApi} from "../../Api/profile-api";
+import {changeUserProfileDataType, profileApi} from "../../Api/profile-api";
+import {editProfileDatatype} from "../../Pages/ProfilePage/ProfileInfo/ProfileEdit/ProfileEditBlock";
 
 const initialState = InitialState.ProfilePage
 
@@ -14,6 +15,7 @@ type ProfilePageReducerType =
     | changeUserStatusACType
     | setUserStatusACType
     | changeAuthorizedAvatarACType
+    | changeProfileDataACType
 
 export const profilePageReducer = (state: ProfilePageDataType = initialState, action: ProfilePageReducerType) => {
     switch (action.type) {
@@ -34,8 +36,32 @@ export const profilePageReducer = (state: ProfilePageDataType = initialState, ac
         case "CHANGE-AUTHORIZED-USER-STATUS": {
             return {...state, status: action.status}
         }
-        case "CHANGE-AUTHORIZED-USER-AVATAR":{
-            return {...state, ...state.userProfile ,...state.userProfile.photos, large: String(action.avatar)}
+        case "CHANGE-AUTHORIZED-USER-AVATAR": {
+            return {...state, ...state.userProfile, ...state.userProfile.photos, large: String(action.avatar)}
+        }
+        case "CHANGE-AUTHORIZED-USER-PROFILE-DATA": {
+            const updatedProfile = {
+                aboutMe: action.AboutMe,
+                contacts: {
+                    facebook: "",
+                    website: "",
+                    vk: "",
+                    twitter: "",
+                    instagram: "",
+                    youtube: "",
+                    github: "",
+                    mainLink: ""
+                },
+                lookingForAJob: action.LookingForAJob,
+                lookingForAJobDescription: action.LookingForAJobDescription,
+                fullName: action.Name,
+                userId: state.userProfile.userId,
+                photos: {
+                    small: state.userProfile.photos.small,
+                    large: state.userProfile.photos.large
+                }
+            }
+            return {...state,userProfile: updatedProfile}
         }
         default:
             return state;
@@ -77,6 +103,23 @@ export const changeAuthorizedUserStatusAC = (status: string) => {
     } as const
 }
 type changeUserStatusACType = ReturnType<typeof changeAuthorizedUserStatusAC>
+
+
+export const changeProfileDataAC = ({
+                                        Name,
+                                        AboutMe,
+                                        LookingForAJob,
+                                        LookingForAJobDescription
+                                    }: editProfileDatatype) => {
+    return {
+        type: "CHANGE-AUTHORIZED-USER-PROFILE-DATA",
+        Name,
+        AboutMe,
+        LookingForAJob,
+        LookingForAJobDescription
+    } as const
+}
+type changeProfileDataACType = ReturnType<typeof changeProfileDataAC>
 
 export const changeAuthorizedAvatarAC = (avatar: File) => {
     return {
@@ -126,5 +169,34 @@ export const changeUserAvatarTC = (file: File) => {
                 }
             }
         )
+    }
+}
+
+export const changeUserProfileDataTC = ({
+                                            Name,
+                                            AboutMe,
+                                            LookingForAJob,
+                                            LookingForAJobDescription,
+                                            Status,
+                                            userId
+                                        }: changeUserProfileDataType) => {
+    return (dispatch: Dispatch) => {
+        const changeUserData = profileApi.changeUserProfileData({
+            Name,
+            AboutMe,
+            LookingForAJob,
+            LookingForAJobDescription, userId, Status
+        })
+        const changeStatus = profileApi.changeStatus(Status)
+        Promise.all([changeUserData, changeStatus]).then(() => {
+            dispatch(setAuthorizedUserStatusAC(Status))
+            dispatch(changeProfileDataAC({
+                Name,
+                AboutMe,
+                LookingForAJob,
+                LookingForAJobDescription,
+                Status
+            }))
+        })
     }
 }

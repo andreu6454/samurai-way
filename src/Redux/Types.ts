@@ -19,7 +19,8 @@ export type ProfilePageDataType = {
     PostsData: Array<PostsDataType>,
     userProfile: profileInfoResponseType,
     status: string,
-    isLoading: boolean
+    isLoading: boolean,
+    profileEditable: boolean
 }
 export type MessagesPageDataType = {
     DialogsData: Array<DialogsDataType>

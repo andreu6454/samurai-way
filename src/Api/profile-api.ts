@@ -1,4 +1,5 @@
 import {instance, profileInfoResponseType} from "./users-api";
+import {editProfileDatatype} from "../Pages/ProfilePage/ProfileInfo/ProfileEdit/ProfileEditBlock";
 
 export const profileApi = {
     changeStatus(status: string) {
@@ -18,6 +19,21 @@ export const profileApi = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    changeUserProfileData({
+                              Name,
+                              AboutMe,
+                              LookingForAJob,
+                              LookingForAJobDescription,
+                              userId
+                          }: changeUserProfileDataType) {
+        return instance.put('/profile', {
+            userId: userId,
+            fullName: Name,
+            AboutMe: AboutMe,
+            lookingForAJob: LookingForAJob,
+            LookingForAJobDescription: LookingForAJobDescription
+        })
     }
 }
 
@@ -25,4 +41,8 @@ interface changeStatusResponse {
     resultCode: number
     messages: string[],
     data: {}
+}
+
+export interface changeUserProfileDataType extends editProfileDatatype {
+    userId: number
 }

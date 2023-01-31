@@ -23,12 +23,25 @@
     line-height: 24px;
     color: #8b949e
 }
-.ProfileDescription{
+.ProfileStatus{
     margin-top: 15px;
     border-top: #30363d 1px solid;
     border-bottom: #30363d 1px solid;
     font-size: 24px;
     color: #c9d1d9;
+}
+.ProfileDescription{
+    margin-top: 15px;
+    padding: 15px;
+    border-top: #30363d 1px solid;
+    border-bottom: #30363d 1px solid;
+    font-size: 24px;
+    color: #c9d1d9;
+}
+.descriptionItem{
+    font-size: 18px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 .EditButton{
     margin-top: 15px;
