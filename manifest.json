@@ -1,0 +1,8 @@
+{
+  "short_name": "Social Network",
+  "name": "My social network",
+  "start_url": "/profile",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
