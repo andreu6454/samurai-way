@@ -1,5 +1,5 @@
 import React, {lazy} from 'react';
-import {createBrowserRouter, createRoutesFromElements, Navigate, Route} from "react-router-dom";
+import {createHashRouter, createRoutesFromElements, Navigate, Route} from "react-router-dom";
 import SettingsPage from "./Pages/SettingsPage/SettingsPage";
 import {PrivateRoutes} from "./Routes/PrivateRoutes";
 import {Layout} from "./Components/Layout/Layout";
@@ -15,7 +15,7 @@ const MusicPage = lazy(() => import('./Pages/MusicPage/MusicPage'))
 const LoginPage = lazy(() => import('./Pages/LoginPage/LoginPage'))
 const FriendsPage = lazy(() => import('./Pages/FriendsPage/FriendsPage'))
 
-export const routes = createBrowserRouter(
+export const routes = createHashRouter(
     createRoutesFromElements(
         <Route element={<Layout/>}>
             <Route element={<PrivateRoutes/>}>
