@@ -107,7 +107,7 @@ export const InitialState = {
                 name: "Daniil",
                 surname: "Potekhin",
                 mutualFriends: 6,
-                avatar: "https://sun9-61.userapi.com/impf/c858324/v858324427/74ad2/g-a9YdAaqgI.jpg?size=1535x2048&quality=96&sign=3b38bffb492db587fda1793fbcae825c&type=album"
+                avatar: "https://sun9-31.userapi.com/impf/c626421/v626421785/43089/X_RH8aUhAEE.jpg?size=960x720&quality=96&sign=88dd041d44fde45223d6287305057f08&type=album"
             },
         ],
     },
