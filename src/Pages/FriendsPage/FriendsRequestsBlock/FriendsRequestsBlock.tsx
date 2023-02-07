@@ -2,6 +2,7 @@ import React from 'react';
 import style from "./FriendsRequestsBlock.module.css"
 import {FriendsRequestType} from "../../../Redux/Types";
 import Request from "./Request/Request";
+import {v1} from "uuid";
 
 type FriendsRequestBlock = {
     state: Array<FriendsRequestType>
@@ -9,7 +10,7 @@ type FriendsRequestBlock = {
 const FriendsRequestsBlock = (props: FriendsRequestBlock) => {
 
     const friendRequests = props.state.map(request =>
-        <Request state={request}/>
+        <Request key={v1()} state={request}/>
     )
 
     return (

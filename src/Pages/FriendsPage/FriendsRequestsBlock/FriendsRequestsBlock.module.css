@@ -1,9 +1,10 @@
 .FriendsRequestBlock{
     width: 250px;
     min-height: 250px;
-    background-color: #3b3939;
+    background-color: #21262d;
     border-radius: 5px;
     margin-left: 50px;
+    padding-bottom: 1px;
 }
 .title{
     text-align: center;
@@ -13,5 +14,5 @@
     color: white;
 }
 .content{
-    margin: 20px;
+    margin: 20px 0;
 }

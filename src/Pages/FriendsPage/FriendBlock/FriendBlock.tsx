@@ -9,9 +9,7 @@ type FriendBlockPropsType = {
 const FriendBlock = (props: FriendBlockPropsType) => {
     return (
         <div className={style.FriendBlock}>
-            <div className={style.avatar}>
-                <img src={props.state.avatar} alt={"avatar"}></img>
-            </div>
+            <img className={style.avatar} src={props.state.avatar} alt={"avatar"}></img>
             <div className={style.content}>
                 <div className={style.NameSurname}>
                     {props.state.friend} {props.state.surname}

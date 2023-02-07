@@ -1,13 +1,14 @@
 .FriendBlock{
     width: 500px;
     height: 100px;
-    background-color: #3b3939;
-    border-radius: 5px;
+    border-radius: 6px;
     margin-bottom: 10px;
     display: flex;
+    border: 1px solid #30363d;
+    align-items: center;
+    padding: 5px 16px;
 }
-.avatar img{
-    padding: 5px;
+.avatar{
     width: 90px;
     height: 90px;
     border-radius: 50%;
@@ -20,8 +21,10 @@
     font-size: 25px;
     font-family: "Apple Symbols", system-ui;
     color: white;
+    margin-left: 20px;
 }
 .links a{
     color: dodgerblue;
     text-decoration: none;
+    margin-left: 10px;
 }

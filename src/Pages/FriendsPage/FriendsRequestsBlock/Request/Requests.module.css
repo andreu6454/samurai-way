@@ -1,34 +1,38 @@
-.request{
-    margin: 5px auto 5px auto ;
-    width: 200px;
-    height: 60px;
+.request {
+    margin: 5px auto;
+    width: 230px;
+    min-height: 60px;
     display: flex;
+    padding: 5px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    align-items: center;
+    box-sizing: border-box;
 }
-.avatar img{
-    padding-top: 5px;
-    padding-bottom: 5px;
+
+.avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
-.NameSurname a{
-    padding-left: 10px;
-    padding-top: 2px;
+.infoBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}
+.NameSurname{
+    text-decoration: none;
+    color: #58a6ff;
+}
+.friendsCounter{
+    text-decoration: none;
+    color: #c9d1d9;
     font-size: 14px;
-    color: white;
-    text-decoration: none;
+    font-weight: bold;
 }
-.friendsCounter a{
-    padding-left: 5px;
-    padding-top: 2px;
-    font-size: 12px;
-    color: white;
+.AddFriendKey{
     text-decoration: none;
-}
-.AddFriendKey a{
-    padding-left: 5px;
-    padding-top: 2px;
-    font-size: 12px;
-    color: dodgerblue;
-    text-decoration: none;
+    color: #c9d1d9;
+    font-size: 14px;
 }

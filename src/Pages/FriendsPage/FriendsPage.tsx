@@ -1,25 +1,28 @@
 import React from 'react';
 import style from "./Friends.module.css"
 import FriendBlock from "./FriendBlock/FriendBlock";
-import {FriendsPageDataType} from "../../Redux/Types";
 import FriendsRequestsBlock from "./FriendsRequestsBlock/FriendsRequestsBlock";
+import {useAppSelector} from "../../Redux/ReduxState";
+import {v1} from "uuid";
 
-type FriendsPropsType = {
-    state: FriendsPageDataType
-}
-const FriendsPage = (props: FriendsPropsType) => {
 
-    const friends = props.state.FriendsData.map(friend =>
-        <FriendBlock state={friend}/>
+const FriendsPage = () => {
+
+    const state = useAppSelector(state1 => state1.FriendsPage)
+    const friends = state.FriendsData.map(friend =>
+        <FriendBlock key={v1()} state={friend}/>
     )
 
     return (
         <div className={style.FriendsBlock}>
-            <div>
+            <div className={style.FriendsList}>
+                {friends}
+                {friends}
+                {friends}
                 {friends}
             </div>
             <div className={style.FriendsAddBlock}>
-                <FriendsRequestsBlock state={props.state.FriendsRequest}/>
+                <FriendsRequestsBlock state={state.FriendsRequest}/>
             </div>
         </div>
     );

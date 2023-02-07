@@ -1,6 +1,12 @@
 .FriendsBlock{
-    width: 800px;
+    width: 1000px;
     margin: auto;
     padding: 20px;
     display: flex;
+    justify-content: center;
+}
+.FriendsList{
+    background-color: #21262d;
+    padding: 16px;
+    border-radius: 5px;
 }
