@@ -1,0 +1,21 @@
+.newsPage{
+    padding: 20px 60px;
+    box-sizing: border-box;
+}
+.newsPage h1{
+    color: #c9d1d9;
+    font-size: 24px;
+    margin: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    padding: 0;
+    line-height: 24px;
+    font-weight: 400;
+}
+.newsBlock{
+    width: 800px;
+    margin: auto;
+    height: max-content;
+    background-color: #161b22;
+    padding: 20px 60px;
+    border-radius: 6px;
+}
