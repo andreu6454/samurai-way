@@ -5,7 +5,8 @@
     border-radius: 6px;
     border: 1px solid #30363d;
     color: #c9d1d9;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    background-color: #161b22;
 }
 .postInfo{
     display: flex;
