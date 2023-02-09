@@ -19,7 +19,6 @@ export const appReducer = (state: initialStateType = initialState, action: appRe
         case "SET-INITIALIZED":
             return {...state, isInitialized: action.isInitialized}
         case "SET-AVATAR-VISIBLE":
-            console.log(action.isVisible)
             return {...state, isVisible: action.isVisible}
         default:
             return state
