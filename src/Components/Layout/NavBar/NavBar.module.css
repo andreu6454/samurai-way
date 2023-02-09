@@ -13,31 +13,38 @@
 }
 .LinksContainer{
     position: relative;
-    left: 150px;
+    left: 100px;
     display: flex;
     width: 790px;
     justify-content: space-between;
 }
 .avatarAndLogin{
-    position: fixed;
-    left: 12%;
+    position: relative;
     display: flex;
     height: 48px;
+    left: -50px;
     align-items: center;
     top: 0;
     color: #c9d1d9;
     font-size: 14px;
     font-weight: bold;
 }
-.avatarAndLogin img{
+.avatarAndLoginHidden{
+    position: relative;
+    display: flex;
+    height: 48px;
+    align-items: center;
+    min-width: 125px;
+    top: 0;
+    color: #c9d1d9;
+    font-size: 14px;
+    font-weight: bold;
+    visibility: hidden;
+}
+
+.avatarAndLoginImg{
     width: 36px;
     height: 36px;
     border-radius: 50%;
     margin-right: 10px;
-}
-
-@media screen and (min-width: 1500px) {
-    .avatarAndLogin{
-        left: 25%
-    }
 }

@@ -11,10 +11,11 @@ const NavBar = () => {
 
     return (
         <div className={style.LinksBlock}>
-            {!isAvatarVisible && <div className={style.avatarAndLogin}>
-                {avatar && <img src={avatar} alt={'avatar'}/>}
+            <div className={!isAvatarVisible? style.avatarAndLogin : style.avatarAndLoginHidden}>
+                {avatar && <img className={style.avatarAndLoginImg} src={avatar} alt={'avatar'}/>}
                 {login}
-            </div>}
+            </div>
+
             <div className={style.LinksContainer}>
                 <StyledLink redirectTo={"/profile"} title={"Profile"}/>
 
