@@ -31,6 +31,9 @@ const Avatar = memo(({profilePhoto}: AvatarPropsType) => {
         if (renderCount > 1) {
             dispatch(setAvatarVisibleAC(inView))
         }
+        return () => {
+            dispatch(setAvatarVisibleAC(true))
+        }
     }, [inView])
 
     return (
