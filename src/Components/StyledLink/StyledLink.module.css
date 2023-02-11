@@ -1,15 +1,23 @@
 .Link{
     min-height: 48px;
+    box-sizing: border-box;
+    padding: 0 16px;
     display: flex;
     align-items: center;
-    color: #c9d1d9;
+    color: var(--light-text);
     text-decoration: none;
+}
+.Link:hover{
+    background-color: rgba(139, 148, 158, 0.34);
+    border-radius: 6px;
 }
 .selectedLink{
     min-height: 48px;
+    box-sizing: border-box;
+    padding: 0 16px;
     display: flex;
     align-items: center;
-    color: #c9d1d9;
+    color: var(--light-text);
     text-decoration: none;
     border-bottom: #f78166 2px solid;
 }
