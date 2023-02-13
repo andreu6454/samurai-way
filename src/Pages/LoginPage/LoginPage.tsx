@@ -50,9 +50,9 @@ const LoginPage = () => {
     }
     return (
         <div className={style.loginPage}>
-            <div className={style.title}>
+            <h1 className={style.title}>
                 Sign in
-            </div>
+            </h1>
             <div className={style.loginBlock}>
                 <div className={style.inputBlock}>
                     Email address
