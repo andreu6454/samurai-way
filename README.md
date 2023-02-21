@@ -3,4 +3,5 @@
 - Typescript
 - React
 - Redux
+- Redux-Thunk
 - gitHub, gitHub Pages
