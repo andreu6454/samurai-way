@@ -46,14 +46,15 @@ const ProfileMenu = () => {
                 }}
             >
                 <div className={style.popoverContent}>
-                    <div className={style.loginBlock}>
+                    {login && <div className={style.loginBlock}>
                         Signed in as
                         <div className={style.login}>
                             {login}
                         </div>
-                    </div>
+                    </div>}
                     <div className={style.linksBlock}>
-                        <NavLink to={appRoutes.PROFILE} onClick={handleClose} className={style.navLink}> Your profile</NavLink>
+                        <NavLink to={appRoutes.PROFILE} onClick={handleClose} className={style.navLink}> Your
+                            profile</NavLink>
                         <NavLink to={appRoutes.USERS} onClick={handleClose} className={style.navLink}> Users</NavLink>
                     </div>
                     <div className={style.logOutBlock} onClick={logOutHandle}>
