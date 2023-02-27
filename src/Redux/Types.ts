@@ -1,20 +1,5 @@
 import {profileInfoResponseType} from "../Api/users-api";
 
-export type StateDataType = {
-    ProfilePage: ProfilePageDataType
-    MessagesPage: MessagesPageDataType
-    NavBarPage: NavBarDataType
-    FriendsPage: FriendsPageDataType
-    UsersPage: UsersPageType
-}
-export type NavBarDataType = {
-    NavBarData: Array<NavBarType>
-}
-export type NavBarType = {
-    id: string
-    friend: string,
-    avatar: string
-}
 export type ProfilePageDataType = {
     PostsData: Array<PostsDataType>,
     userProfile: profileInfoResponseType,

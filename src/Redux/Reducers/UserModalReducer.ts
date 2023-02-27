@@ -2,29 +2,10 @@ import {profileInfoResponseType} from "../../Api/users-api";
 import {Dispatch} from "redux";
 import {profileApi} from "../../Api/profile-api";
 import {followApi} from "../../Api/follow-api";
+import {InitialState} from "../InitialState";
 
 const initialState = {
-    userInfo: {
-        aboutMe: "",
-        contacts: {
-            facebook: "",
-            website: "",
-            vk: "",
-            twitter: "",
-            instagram: "",
-            youtube: "",
-            github: "",
-            mainLink: ""
-        },
-        lookingForAJob: false,
-        lookingForAJobDescription: "",
-        fullName: "",
-        userId: null,
-        photos: {
-            small: "",
-            large: ""
-        }
-    },
+    userInfo: InitialState.ProfilePage.userProfile,
     status: "",
     isFollowing: false,
     isDisabled: false,
