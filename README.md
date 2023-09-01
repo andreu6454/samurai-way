@@ -4,5 +4,5 @@
 - React
 - Redux
 - Redux-Thunk
-- Redux-hook-form
+- React-hook-form
 - gitHub, gitHub Pages
